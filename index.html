@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gichan Lee - Cloud Solutions Architect</title>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --bg-alt: #161b22;
+      --border-color: #30363d;
+      --text-color: #c9d1d9;
+      --heading-color: #ffffff;
+      --accent-color: #f14e32;
+      --link-color: #58a6ff;
+      --header-bg: #161b22;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--heading-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      color: var(--accent-color);
+      margin-right: 8px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--link-color);
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      color: var(--heading-color);
+      margin-top: 0;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .hero-text h2 {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--bg-alt);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn.primary {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .btn:hover {
+      background-color: var(--border-color);
+      text-decoration: none;
+    }
+    
+    .btn.primary:hover {
+      background-color: #c93b22;
+    }
+
+    /* Terminal Box */
+    .terminal-box {
+      flex: 0.8;
+      background-color: #010409;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      overflow: hidden;
+      width: 100%;
+      min-width: 300px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .terminal-header {
+      background-color: var(--bg-alt);
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 15px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-header span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-header span:nth-child(1) { background-color: #ff5f56; }
+    .terminal-header span:nth-child(2) { background-color: #ffbd2e; }
+    .terminal-header span:nth-child(3) { background-color: #27c93f; }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+      font-size: 0.85rem;
+      color: #79c0ff;
+      line-height: 1.5;
+    }
+
+    .terminal-body .comment { color: #8b949e; }
+    .terminal-body .keyword { color: #ff7b72; }
+    .terminal-body .string { color: #a5d6ff; }
+    .terminal-body .prompt { color: #3fb950; }
+    .terminal-body .output { color: #c9d1d9; }
+
+    /* Sections */
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--heading-color);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+      margin-top: 50px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title::before {
+      content: "§";
+      color: var(--accent-color);
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .sub-section-title {
+      color: var(--heading-color);
+      font-size: 1.2rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 24px;
+      transition: border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: #8b949e;
+    }
+
+    .card img.preview {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--heading-color);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #8b949e;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .tags {
+      margin-bottom: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    /* Narrative Elements */
+    blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding: 10px 20px;
+      margin: 20px 0;
+      background-color: var(--bg-alt);
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: #c9d1d9;
+      font-size: 1rem;
+    }
+
+    ul.narrative-list {
+      padding-left: 25px;
+      margin-bottom: 30px;
+      color: #c9d1d9;
+    }
+    ul.narrative-list li {
+      margin-bottom: 10px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    th {
+      background-color: var(--bg-alt);
+      color: var(--heading-color);
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background-color: rgba(255,255,255,0.01); }
+    tr:hover { background-color: rgba(255,255,255,0.03); }
+
+    /* Timeline */
+    pre.timeline {
+      background-color: #010409;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, "Courier New", monospace;
+      font-size: 0.9rem;
+      color: #c9d1d9;
+      line-height: 1.7;
+    }
+
+    /* Badges Display */
+    .badges-group {
+      margin-bottom: 15px;
+    }
+    .badges-group h4 {
+      color: #8b949e;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 10px 0;
+    }
+    .badges-group img {
+      margin: 0 5px 5px 0;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #8b949e;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo"><span>&gt;</span> GICHAN LEE</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#foundations">Foundations</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <h1>Cloud Solutions Architect</h1>
+        <h2><span style="color:var(--accent-color)">#</span> Systems Designer &nbsp;|&nbsp; AI Engineer</h2>
+        
+        <p style="margin: 20px 0;">
+          <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=58a6ff&center=false&vCenter=true&width=500&lines=Cloud-Native+Infrastructure+on+OCI+%2B+k3s;LLM+Agent+Systems+%26+MLOps+Pipelines;Designing+Systems+Where+Technology+Meets+Growth" alt="Typing SVG" style="max-width: 100%;" />
+        </p>
+
+        <div style="margin-bottom: 30px;">
+          <a href="https://github.com/bookseal" target="_blank" class="btn primary">GitHub Profile</a>
+          <a href="https://linkedin.com/in/bookseal" target="_blank" class="btn">LinkedIn</a>
+          <a href="https://wiki.bit-habit.com" target="_blank" class="btn">Wiki</a>
+        </div>
+
+        <blockquote>
+          "I don't just build software — I design resilient ecosystems where technology empowers human growth."
+        </blockquote>
+
+        <ul class="narrative-list">
+          <li>Designing and operating <strong>Cloud-Native infrastructure</strong> on Oracle Cloud (OCI) with Kubernetes (k3s).</li>
+          <li>Building <strong>LLM Agent systems</strong> (LangGraph, LangChain) and <strong>MLOps pipelines</strong> from scratch.</li>
+          <li>Former <strong>Microsoft Support #1 Performer</strong> · 5yr AI engineering mentor at Upstage.</li>
+          <li>Based in <strong>Seoul</strong> · Open to remote & Singapore opportunities.</li>
+          <li>Personal knowledge base & architecture notes: <a href="https://wiki.bit-habit.com" target="_blank">wiki.bit-habit.com</a>.</li>
+        </ul>
+      </div>
+      
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="terminal-body">
+          <div class="comment"># 1. Foundation (C / Systems)</div>
+          <div><span class="prompt">$</span> <span class="keyword">make</span> fclean && <span class="keyword">make</span> all</div>
+          <div class="output">Compiling minishell...<br>CC builtins.c<br>CC executor.c<br>Minishell compiled successfully.</div>
+          <br>
+          <div class="comment"># 2. Infrastructure (Cloud)</div>
+          <div><span class="prompt">$</span> <span class="keyword">kubectl</span> get nodes -o wide</div>
+          <div class="output">NAME           STATUS   ROLES                  AGE<br>k3s-master-1   Ready    control-plane,master   124d</div>
+          <br>
+          <div class="comment"># 3. Intelligence (AI Agents)</div>
+          <div><span class="prompt">$</span> <span class="keyword">python</span> agent.py</div>
+          <div class="output">Initializing LangGraph workflow...<br>[Agent] Connected to library system.<br>[Agent] Found 'Deep Learning' at Gangnam.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="stack">
+      <h2 class="section-title">Tech Stack & Infrastructure</h2>
+      
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <!-- Shields Grid -->
+        <div class="card" style="justify-content: center;">
+          <div class="badges-group">
+            <h4>Languages</h4>
+            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+            <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+            <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black" alt="C">
+            <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+            <img src="https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white" alt="Shell">
+            <img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="SQL">
+          </div>
+          
+          <div class="badges-group">
+            <h4>AI / ML</h4>
+            <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
+            <img src="https://img.shields.io/badge/LangGraph-FF6B35?style=flat-square&logo=langchain&logoColor=white" alt="LangGraph">
+            <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI">
+            <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn">
+            <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
+          </div>
+
+          <div class="badges-group">
+            <h4>Cloud & DevOps</h4>
+            <img src="https://img.shields.io/badge/Oracle_OCI-F80000?style=flat-square&logo=oracle&logoColor=white" alt="OCI">
+            <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white" alt="AWS">
+            <img src="https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white" alt="Azure">
+            <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="K8s">
+            <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+            <img src="https://img.shields.io/badge/Terraform-844FBA?style=flat-square&logo=terraform&logoColor=white" alt="Terraform">
+            <img src="https://img.shields.io/badge/Traefik-24A1C1?style=flat-square&logo=traefikproxy&logoColor=white" alt="Traefik">
+          </div>
+        </div>
+
+        <!-- Infrastructure Table -->
+        <div class="table-container" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: center;">
+          <table>
+            <thead>
+              <tr><th colspan="2">Cloud & Infrastructure Engine</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600; width: 35%;">Cloud</td>
+                <td>Oracle OCI · Azure · AWS</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Orchestration</td>
+                <td>k3s (Kubernetes) · AKS · Helm</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Networking</td>
+                <td>Traefik Ingress · Wildcard TLS · cert-manager</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">IaC & CI/CD</td>
+                <td>Terraform · Docker · GitHub Actions</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Philosophy</td>
+                <td>Host-port independence · Zero-trust routing · Declarative code</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Portfolio -->
+    <section id="portfolio">
+      <h2 class="section-title">Portfolio: Live AI Services</h2>
+      <div class="grid">
+        
+        <div class="card">
+          <img class="preview" src="/screenshots/booktoss.png" alt="BookToss">
+          <h3>BookToss</h3>
+          <p>Autonomous LLM agent that browses closed library systems. Checks availability across districts in real-time.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/LangGraph-FF6B35?style=flat-square&logo=langchain&logoColor=white" alt="LangGraph">
+            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            <img src="https://img.shields.io/badge/k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="k3s">
+          </div>
+          <div class="card-links">
+            <a href="https://booktoss.bit-habit.com" target="_blank">Live App</a>
+            <a href="https://github.com/bookseal/Booktoss" target="_blank">Source</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>bit-habit-infra</h3>
+          <p>The core GitOps infrastructure repository managing the k3s cluster, ingress (Traefik), and declarative deployments.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="k3s">
+            <img src="https://img.shields.io/badge/Terraform-844FBA?style=flat-square&logo=terraform&logoColor=white" alt="Terraform">
+            <img src="https://img.shields.io/badge/Helm-0F1689?style=flat-square&logo=helm&logoColor=white" alt="Helm">
+            <img src="https://img.shields.io/badge/Traefik-24A1C1?style=flat-square&logo=traefikproxy&logoColor=white" alt="Traefik">
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/bookseal/bit-habit-infra" target="_blank">Source</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="preview" src="/screenshots/daily-seongsu.png" alt="Daily Seongsu">
+          <h3>Daily Seongsu</h3>
+          <p>Enterprise MLOps roadmap built via Seongsu crowd prediction. Covers automated data collection up to retraining pipelines.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/MLOps-000000?style=flat-square" alt="MLOps">
+            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            <img src="https://img.shields.io/badge/k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="k3s">
+          </div>
+          <div class="card-links">
+            <a href="https://daily-seongsu.bit-habit.com" target="_blank">Live App</a>
+            <a href="https://github.com/bookseal/daily_seongsu" target="_blank">Source</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="preview" src="/screenshots/seoul-apt.png" alt="Seoul APT Prediction">
+          <h3>Seoul APT Prediction</h3>
+          <p>10-step interactive simulator designed to teach the essence of machine learning through hands-on exploration.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn">
+            <img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="Pandas">
+          </div>
+          <div class="card-links">
+            <a href="https://seoul-apt.bit-habit.com" target="_blank">Live App</a>
+            <a href="https://github.com/bookseal/seoul-apt-price-prediction" target="_blank">Source</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <img class="preview" src="/screenshots/viz.png" alt="Cloud Architect Playbook">
+          <h3>Cloud Architect's Playbook</h3>
+          <p>A guidebook covering foundational math DNA and AI system architecture — written specially for architects.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            <img src="https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white" alt="Plotly">
+          </div>
+          <div class="card-links">
+            <a href="https://viz.bit-habit.com" target="_blank">Live App</a>
+            <a href="https://github.com/bookseal/linear-algebra-visualization" target="_blank">Source</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Bithumb AI Trade</h3>
+          <p>Automated Bitcoin trading system that analyzes real-time market data to drive capital decisions via an AI engine.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            <img src="https://img.shields.io/badge/Bithumb_API-orange?style=flat-square" alt="API">
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/bookseal/Bithumb_AI_trade" target="_blank">Source</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Bithabit</h3>
+          <p>Habit tracking application hosting real users in production, running robustly on k3s.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter">
+            <img src="https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white" alt="Dart">
+            <img src="https://img.shields.io/badge/k3s-326CE5?style=flat-square&logo=kubernetes&logoColor=white" alt="k3s">
+          </div>
+          <div class="card-links">
+            <a href="https://bit-habit.com" target="_blank">Live App</a>
+            <a href="https://github.com/bookseal/bithabit" target="_blank">Source</a>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="sub-section-title">AI Services — Progressively Built (2024–2025)</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Project</th>
+              <th>Description</th>
+              <th>Stack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025.03</td>
+              <td><a href="https://github.com/bookseal/munhaepang" target="_blank">munhaepang</a></td>
+              <td>AI literacy platform for middle schoolers</td>
+              <td>
+                <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js">
+                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML">
+                <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS">
+              </td>
+            </tr>
+            <tr>
+              <td>2025.03</td>
+              <td><a href="https://github.com/bookseal/Snowball_English_Web_Service" target="_blank">Snowball English</a></td>
+              <td>AI-powered English learning service</td>
+              <td>
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML">
+                <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS">
+                <img src="https://img.shields.io/badge/AI-purple?style=flat-square" alt="AI">
+              </td>
+            </tr>
+            <tr>
+              <td>2024.09</td>
+              <td><a href="https://github.com/bookseal/The-Foodies-Guide-to-the-Galaxy" target="_blank">The Foodies Guide</a></td>
+              <td>AI food guide web app</td>
+              <td>
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML">
+                <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS">
+                <img src="https://img.shields.io/badge/AI-purple?style=flat-square" alt="AI">
+              </td>
+            </tr>
+            <tr>
+              <td>2024.08</td>
+              <td><a href="https://github.com/bookseal/careettalk" target="_blank">careettalk</a></td>
+              <td>AI career coaching (Firebase + Gemini)</td>
+              <td>
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
+                <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase">
+                <img src="https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" alt="Gemini">
+                <img src="https://img.shields.io/badge/HTML%20%26%20CSS-blue?style=flat-square" alt="HTML/CSS">
+              </td>
+            </tr>
+            <tr>
+              <td>2024.08</td>
+              <td><a href="https://github.com/bookseal/thegreatyou" target="_blank">thegreatyou</a></td>
+              <td>AI personal growth coach (Firebase + Gemini)</td>
+              <td>
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
+                <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase">
+                <img src="https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" alt="Gemini">
+                <img src="https://img.shields.io/badge/HTML%20%26%20CSS-blue?style=flat-square" alt="HTML/CSS">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Foundations / Ecole 42 -->
+    <section id="foundations">
+      <h2 class="section-title">Foundations: The Learning Roadmap</h2>
+      <p style="margin-bottom: 30px; max-width: 800px;">
+        My architecture philosophy is deeply rooted in low-level systems programming. Before orchestrating clouds, I built standard libraries, OS concepts, and 3D engines from absolute scratch in C/C++ at École 42.
+      </p>
+
+      <div style="width: 100%; overflow-x: auto; background-color: var(--bg-alt); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px;">
+        <div class="mermaid">
+          graph TD
+            %% Styles
+            classDef default fill:#0d1117,stroke:#30363d,stroke-width:1px,color:#c9d1d9,rx:6,ry:6;
+            classDef core fill:#161b22,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6,ry:6,font-weight:bold;
+            classDef concept fill:#010409,stroke:#8b949e,stroke-width:1px,color:#8b949e,rx:15,ry:15,font-size:12px;
+            classDef highlight fill:#238636,stroke:#2ea043,stroke-width:1px,color:#ffffff,rx:6,ry:6;
+
+            %% Nodes - Core Journey
+            Start((Start)):::concept
+            
+            subgraph Lang [Language & Systems]
+              direction TB
+              Libft["libft <span style='font-size:0.8em; color:#8b949e;'>(2023.01)</span><br/><small>C Standard Library</small>"]:::default
+              Minishell["minishell <span style='font-size:0.8em; color:#8b949e;'>(2023.06)</span><br/><small>UNIX Shell / Processes</small>"]:::core
+              CPP["C++ Modules <span style='font-size:0.8em; color:#8b949e;'>(2024.02)</span><br/><small>OOP & Templates</small>"]:::default
+            end
+
+            subgraph Infra [Infrastructure & OS]
+              direction TB
+              Born2beroot["born2beroot <span style='font-size:0.8em; color:#8b949e;'>(2023.03)</span><br/><small>System Administration</small>"]:::default
+              Inception["docker_inception <span style='font-size:0.8em; color:#8b949e;'>(2024.06)</span><br/><small>Containers & DevOps</small>"]:::core
+            end
+
+            subgraph Network [Networking & Protocols]
+              direction TB
+              NetPractice["net_practice <span style='font-size:0.8em; color:#8b949e;'>(2023.12)</span><br/><small>TCP/IP & Routing</small>"]:::default
+              IRC["irc_server <span style='font-size:0.8em; color:#8b949e;'>(2024.04)</span><br/><small>Sockets & Multiplexing</small>"]:::core
+            end
+
+            subgraph CSA [Cloud Solutions Architect]
+              direction TB
+              K8s["Kubernetes (k3s)<br/><small>Container Orchestration</small>"]:::highlight
+              CICD["CI/CD & GitOps<br/><small>Terraform, GitHub Actions</small>"]:::highlight
+              Portfolio["Live AI Services<br/><small>BookToss, Bithabit, etc.</small>"]:::core
+            end
+
+            %% Connections
+            Start --> Libft
+            Start --> Born2beroot
+            Start --> NetPractice
+
+            Libft --> Minishell --> CPP
+            
+            Born2beroot --> Inception
+            
+            NetPractice --> IRC
+
+            %% Convergence
+            CPP --> K8s
+            Inception --> K8s
+            Inception --> CICD
+            IRC --> K8s
+            IRC --> CICD
+
+            K8s --> Portfolio
+            CICD --> Portfolio
+
+            %% Clickable links
+            click Libft "https://github.com/bookseal/42_libft" "View Repo"
+            click Minishell "https://github.com/bookseal/42_minishell" "View Repo"
+            click CPP "https://github.com/bookseal/42_cpp" "View Repo"
+            click IRC "https://github.com/bookseal/42_irc_server" "View Repo"
+            click Inception "https://github.com/bookseal/42_docker_compose_inception" "View Repo"
+            click Born2beroot "https://github.com/bookseal/42_born2beroot" "View Repo"
+            click NetPractice "https://github.com/bookseal/42_net_practice" "View Repo"
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline">
+      <h2 class="section-title">Timeline</h2>
+
+      <pre class="timeline">
+2003        Linux Master Level 2 Certification
+2007        Pukyung National University: B.S. in Industrial Engineering
+2018        Gamasot English: Founded English education business in Vietnam (PH ↔ KR)
+2022        Early programming — Java, C basics
+2023        École 42: C fundamentals → fractol, pipex, minishell, push_swap
+2024 Q1–Q2  École 42: C++ modules, IRC server, Docker inception
+2024 Q3–Q4  École 42: Full-stack Pong, Blockchain · First AI web apps (careettalk, thegreatyou)
+2025 Q1–Q2  AI services: Snowball English, munhaepang, Bithumb AI Trade
+2025 Q3–Q4  Production scaling: Bithabit live users, bit-habit-infra
+2026        Advanced AI: BookToss (LLM agent), Daily Seongsu (MLOps), Seoul APT prediction
+      </pre>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+      <h2 class="section-title">Experience & Education</h2>
+
+      <!-- Experience Grid -->
+      <div class="grid" style="grid-template-columns: 1fr;">
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <h3 style="margin-bottom: 2px;">Full-Stack Cloud Infrastructure Owner</h3>
+            <span style="color: #8b949e; font-size: 0.9rem;">Aug 2024 – Present</span>
+          </div>
+          <p style="color: var(--link-color); margin-top: 0; margin-bottom: 15px; font-weight: 500;">Bithabit (bit-habit.com)</p>
+          <ul class="narrative-list" style="margin-bottom: 0;">
+            <li><strong>Infrastructure Modernization:</strong> Led the end-to-end migration of 12+ legacy services (systemd/Docker) to a unified <strong>k3s cluster</strong>, eliminating host-dependency and improving deployment agility.</li>
+            <li><strong>Resilient Networking & Optimization:</strong> Architected high-availability ingress with <strong>Traefik Middlewares</strong> and <strong>cert-manager</strong>, automating wildcard TLS and zero-trust internal routing.</li>
+            <li><strong>Platform Integrity:</strong> Scaled AI-driven services (BookToss, Daily Seongsu) within Kubernetes, ensuring robust resource isolation and automated self-healing.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <h3 style="margin-bottom: 2px;">M365 Technical Support Engineer</h3>
+            <span style="color: #8b949e; font-size: 0.9rem;">Aug 2025 – Nov 2025</span>
+          </div>
+          <p style="color: var(--link-color); margin-top: 0; margin-bottom: 15px; font-weight: 500;">Concentrix (Microsoft Support)</p>
+          <ul class="narrative-list" style="margin-bottom: 0;">
+            <li><strong>Top Performance:</strong> Ranked #1 out of 20+ engineers; achieved <strong>92.7% SRR</strong> and <strong>0.0% DSAT</strong> by resolving complex enterprise-scale migrations and hybrid-cloud identity blockers.</li>
+            <li><strong>VoC Influence:</strong> Selected as a <strong>Microsoft Global Tester</strong>; provided technical RCA and AI UX feedback directly to MS Product Groups, influencing global development cycles.</li>
+            <li><strong>Leadership:</strong> Spearheaded the "Fireteam" initiative, mentoring peers through Azure/M365 certification tracks to scale team-wide technical intensity.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+            <h3 style="margin-bottom: 2px;">Embedded Technical Support Engineer</h3>
+            <span style="color: #8b949e; font-size: 0.9rem;">Oct 2024 – Jul 2025</span>
+          </div>
+          <p style="color: var(--link-color); margin-top: 0; margin-bottom: 15px; font-weight: 500;">FPT Software</p>
+          <ul class="narrative-list" style="margin-bottom: 0;">
+            <li>Resolved "undiagnosable" system errors via memory reverse-engineering and low-level protocol analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education Table -->
+      <h3 class="sub-section-title" style="margin-top: 40px;">Academic Foundations</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 30%;">Institution</th>
+              <th>Degree / Program</th>
+              <th style="width: 20%;">Period</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 600;">École 42 Seoul</td>
+              <td>Computer Science & Software Engineering</td>
+              <td style="color: #8b949e;">2022 – 2024</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600;">Pukyung National University</td>
+              <td>B.S. in Industrial Engineering</td>
+              <td style="color: #8b949e;">2007 – 2014</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> Gichan Lee. All rights reserved.<br>
+      Deployed via <a href="https://k3s.io/" target="_blank">k3s</a>. Served by Nginx. Written in pure HTML/CSS.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#161b22',
+        primaryTextColor: '#c9d1d9',
+        primaryBorderColor: '#30363d',
+        lineColor: '#58a6ff',
+        secondaryColor: '#010409',
+        tertiaryColor: '#0d1117'
+      },
+      flowchart: {
+        curve: 'basis',
+        padding: 20
+      }
+    });
+  </script>
+</body>
+</html>
