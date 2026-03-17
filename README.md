@@ -14,7 +14,7 @@ This repository contains the static portfolio site for <https://bit-habit.com>.
 
 ## Screenshot
 
-![Portfolio Preview](./screenshots/booktoss.png)
+![Portfolio Preview](./screenshots/bit-habit-home.png)
 
 ## Files
 
