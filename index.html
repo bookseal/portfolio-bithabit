@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gichan Lee - AI Forward Deployed Engineer</title>
   <style>
     :root {
-      --bg-color: #0d1117;
-      --bg-alt: #161b22;
-      --border-color: #30363d;
-      --text-color: #c9d1d9;
-      --text-secondary: #8b949e;
-      --heading-color: #ffffff;
-      --accent-color: #f14e32;
-      --link-color: #58a6ff;
-      --header-bg: #161b22;
-      --gold: #ffd700;
-      --green: #238636;
+      --bg-color: #ffffff;
+      --bg-alt: #f6f8fa;
+      --border-color: #d0d7de;
+      --text-color: #1f2328;
+      --text-secondary: #57606a;
+      --heading-color: #0d1117;
+      --accent-color: #c0392b;
+      --link-color: #0969da;
+      --header-bg: #ffffff;
+      --gold: #9a6700;
+      --green: #1a7f37;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple SD Gothic Neo", sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
@@ -85,18 +85,18 @@
 
     /* Layout */
     .container {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
     /* Hero Section */
     .hero {
-      min-height: 45vh;
+      min-height: 40vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 0 40px;
+      padding: 48px 0 32px;
     }
 
     .hero h1 {
@@ -109,7 +109,7 @@
     .hero .title {
       font-size: 1.15rem;
       color: var(--link-color);
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 28px;
     }
 
@@ -162,8 +162,9 @@
     }
 
     .impact-card .impact-line2 .arrow {
-      color: var(--link-color);
+      color: var(--accent-color);
       margin-right: 4px;
+      font-weight: 700;
     }
 
     .impact-card .impact-line2 .result {
@@ -171,20 +172,20 @@
       font-weight: 600;
     }
 
-    .impact-card:nth-child(1) { border-left: 3px solid #ff6b35; }
-    .impact-card:nth-child(1) .impact-label { color: #ff6b35; }
+    .impact-card:nth-child(1) { border-left: 3px solid #d1492c; }
+    .impact-card:nth-child(1) .impact-label { color: #b83a20; }
 
-    .impact-card:nth-child(2) { border-left: 3px solid #58a6ff; }
-    .impact-card:nth-child(2) .impact-label { color: #58a6ff; }
+    .impact-card:nth-child(2) { border-left: 3px solid #0969da; }
+    .impact-card:nth-child(2) .impact-label { color: #0860c4; }
 
-    .impact-card:nth-child(3) { border-left: 3px solid #3fb950; }
-    .impact-card:nth-child(3) .impact-label { color: #3fb950; }
+    .impact-card:nth-child(3) { border-left: 3px solid #1a7f37; }
+    .impact-card:nth-child(3) .impact-label { color: #176e30; }
 
-    .impact-card:nth-child(4) { border-left: 3px solid #f0883e; }
-    .impact-card:nth-child(4) .impact-label { color: #f0883e; }
+    .impact-card:nth-child(4) { border-left: 3px solid #bc5800; }
+    .impact-card:nth-child(4) .impact-label { color: #9a4a00; }
 
-    .impact-card:nth-child(5) { border-left: 3px solid #bc8cff; }
-    .impact-card:nth-child(5) .impact-label { color: #bc8cff; }
+    .impact-card:nth-child(5) { border-left: 3px solid #8250df; }
+    .impact-card:nth-child(5) .impact-label { color: #6e40c9; }
 
     .hero-links {
       display: flex;
@@ -217,12 +218,12 @@
     }
 
     .btn.primary:hover {
-      background-color: #c93b22;
+      background-color: #a5311c;
     }
 
     /* Sections */
     section {
-      padding: 80px 0 0;
+      padding: 64px 0 0;
     }
 
     .section-title {
@@ -230,7 +231,7 @@
       color: var(--heading-color);
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 10px;
-      margin: 0 0 40px;
+      margin: 0 0 36px;
       display: flex;
       align-items: center;
     }
@@ -248,21 +249,12 @@
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 28px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       transition: border-color 0.2s;
     }
 
     .featured-card:hover {
       border-color: var(--text-secondary);
-    }
-
-    .featured-card img.preview {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
     .featured-card h3 {
@@ -273,7 +265,7 @@
 
     .award-badge {
       color: var(--gold);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       margin-bottom: 12px;
     }
@@ -329,10 +321,58 @@
     }
 
     .btn-source:hover {
-      background-color: var(--bg-alt);
+      background-color: #eaeef2;
       border-color: var(--text-secondary);
       text-decoration: none;
     }
+
+    /* ===== Screenshot placeholders ===== */
+    .shot {
+      border: 2px dashed #aeb6bf;
+      border-radius: 8px;
+      background-color: #fbfcfd;
+      margin: 0 0 18px;
+      overflow: hidden;
+    }
+    .shot.ratio { aspect-ratio: 16 / 9; }
+    .shot-inner {
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      gap: 7px;
+    }
+    .shot-cam {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 2px 10px;
+    }
+    .shot-title {
+      font-weight: 700;
+      color: var(--heading-color);
+      font-size: 0.95rem;
+    }
+    .shot-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      max-width: 92%;
+      line-height: 1.5;
+    }
+    .shot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .shot-grid .shot { margin-bottom: 0; height: 100%; }
 
     /* More Projects Cards */
     .more-grid {
@@ -399,14 +439,17 @@
     }
 
     .more-card .more-line2 .arrow {
-      color: var(--link-color);
+      color: var(--accent-color);
       margin-right: 4px;
+      font-weight: 700;
     }
 
     .more-card .more-line2 .result {
       color: var(--text-color);
       font-weight: 600;
     }
+
+    .more-card .shot { margin-top: 12px; margin-bottom: 0; }
 
     /* Tech Stack */
     .badges-group {
@@ -479,29 +522,103 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
+      .hero h1 { font-size: 2rem; }
+      .container { padding: 0 16px; }
+      section { padding: 48px 0 0; }
+      .featured-card { padding: 20px; }
+      .shot-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       PRINT — A4, white background, black-and-white friendly
+       ============================================================ */
+    @page {
+      size: A4;
+      margin: 14mm 14mm 16mm;
+    }
+
+    @media print {
+      html, body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 10.3pt;
+        line-height: 1.42;
       }
-      .container {
-        padding: 0 16px;
+
+      /* Hide screen-only chrome */
+      header,
+      nav,
+      .hero-links,
+      footer .deploy-note { display: none !important; }
+
+      /* Full-bleed within A4 margins */
+      .container { max-width: none; width: 100%; margin: 0; padding: 0; }
+
+      .hero { min-height: 0; padding: 0 0 10pt; display: block; }
+      .hero h1 { font-size: 22pt; margin-bottom: 2pt; }
+      .hero .title { font-size: 12pt; margin-bottom: 12pt; color: #000; }
+      .hero .intro { font-size: 10.5pt; margin-bottom: 10pt; }
+
+      section { padding: 16pt 0 0; }
+      .section-title {
+        font-size: 14pt; color: #000;
+        margin: 0 0 12pt; padding-bottom: 6pt;
+        border-bottom: 1px solid #000;
+        break-after: avoid; page-break-after: avoid;
       }
-      section {
-        padding: 60px 0 0;
+      .section-title::before { color: #000; }
+
+      h3, .award-badge { break-after: avoid; page-break-after: avoid; }
+
+      /* Cards: flat, white, thin gray border, no shadow */
+      .impact-card, .featured-card, .more-card {
+        background: #fff !important;
+        box-shadow: none !important;
+        border: 1px solid #999 !important;
       }
-      .impact-card {
-        flex-direction: column;
-        gap: 4px;
+      .impact-card { border-left: 3px solid #000 !important; }
+      .impact-card .impact-label,
+      .impact-card .impact-line2 .arrow,
+      .more-card .more-line2 .arrow { color: #000 !important; }
+      .impact-card .impact-line1, .impact-card .impact-line2,
+      .more-line1, .more-line2, .desc, .tech-line,
+      .impact-card .impact-line2 .result { color: #000 !important; }
+      .award-badge { color: #000 !important; }
+
+      .featured-card { padding: 12pt 14pt; margin-bottom: 14pt; }
+      .impact-grid { gap: 6pt; margin-bottom: 16pt; }
+      .impact-card { padding: 8pt 10pt; }
+
+      /* Don't split images / discrete blocks across pages */
+      .shot, .shot-grid, .impact-card, .more-card,
+      .exp-item, .badges-group { break-inside: avoid; page-break-inside: avoid; }
+      /* Allow long featured cards to flow across pages if needed */
+      .featured-card { break-inside: auto; page-break-inside: auto; }
+
+      /* Screenshot placeholders: visible, B&W, height-capped so they fit a page */
+      .shot {
+        background: #fff !important;
+        border: 1.4pt dashed #555 !important;
       }
-      .featured-card {
-        padding: 20px;
+      .shot.ratio { aspect-ratio: auto; height: 46mm; }
+      .shot-grid .shot.ratio { height: 42mm; }
+      .shot-cam { color: #000; border-color: #000; }
+      .shot-title, .shot-desc { color: #000 !important; }
+
+      /* Links: dark + show URL after action buttons so print is self-contained */
+      a { color: #000 !important; text-decoration: underline; }
+      .btn-live, .btn-source {
+        background: #fff !important; color: #000 !important;
+        border: 1px solid #000 !important; padding: 1pt 5pt;
+        font-size: 8.5pt;
       }
-      .more-projects-table {
-        font-size: 0.82rem;
+      .card-actions a::after {
+        content: "  " attr(href);
+        font-weight: 400; font-size: 8pt; color: #000;
       }
-      .more-projects-table th,
-      .more-projects-table td {
-        padding: 8px 10px;
-      }
+      .badges-group img { filter: grayscale(100%); }
+
+      a[href]:hover { text-decoration: underline; }
     }
   </style>
 </head>
@@ -510,9 +627,9 @@
   <header>
     <a href="/" class="logo"><span>&gt;</span> GICHAN LEE</a>
     <nav>
-      <a href="#projects">Projects</a>
-      <a href="#stack">Stack</a>
-      <a href="#experience">Experience</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#stack">기술 스택</a>
+      <a href="#experience">경력</a>
     </nav>
   </header>
 
@@ -523,7 +640,7 @@
       <h1>Gichan Lee</h1>
       <div class="title">AI Forward Deployed Engineer</div>
 
-      <div class="intro">I build AI automation that works in the real world:</div>
+      <div class="intro">실제 세상에서 동작하는 AI 자동화를 만듭니다:</div>
 
       <div class="impact-grid">
         <a href="#sentinel" class="impact-card">
@@ -562,19 +679,33 @@
 
     <!-- Featured Projects -->
     <section id="projects">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">주요 프로젝트</h2>
 
       <!-- Sentinel -->
       <div class="featured-card" id="sentinel">
-        <img class="preview" src="./screenshots/sentinel.png" alt="Sentinel screenshot" width="1280" height="720" loading="lazy">
-        <h3>Sentinel &mdash; Real-time Cognitive Assistant</h3>
-        <div class="award-badge">&#127942; 1st Place &mdash; Megazone Cloud AI Agent Hackathon</div>
+        <h3>Sentinel &mdash; 실시간 인지 보조 에이전트</h3>
+        <div class="award-badge">&#127942; 1위 &mdash; 메가존클라우드 AI Agent 해커톤</div>
         <p class="desc">
-          Real-time voice monitor that detects raised voices and alerts people
-          before conversations get out of hand.
-          Chose local NumPy over cloud APIs &mdash; $0 cost, &lt;10ms latency.
-          Weekly mentoring with Infobank CTO to validate tech choices from a business perspective.
+          대화가 격해지기 전에 높아진 목소리를 실시간으로 감지해 알려주는 음성 모니터.
+          클라우드 API 대신 로컬 NumPy를 선택해 비용 $0, 지연 &lt;10ms를 달성.
+          인포뱅크 CTO와 매주 멘토링하며 기술 선택을 비즈니스 관점에서 검증.
         </p>
+        <div class="shot-grid">
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">정상 모니터링 대시보드</span>
+              <span class="shot-desc">실시간 볼륨 미터가 낮은 레벨, 상태 "정상". 화면 어딘가에 로컬 처리 / 응답 &lt;10ms 표시가 보이게.</span>
+            </div>
+          </figure>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">경고 발생 순간</span>
+              <span class="shot-desc">볼륨이 임계치를 넘어 경고/알림이 뜬 상태. 경고 배지나 알림 토스트가 명확히 보이게.</span>
+            </div>
+          </figure>
+        </div>
         <div class="tech-line">Tech: LangGraph &middot; Gradio &middot; NumPy &middot; k3s &middot; OCI &middot; Docker</div>
         <div class="card-actions">
           <a href="https://sentinel.bit-habit.com" target="_blank" class="btn-live">Live App</a>
@@ -584,15 +715,30 @@
 
       <!-- BookToss -->
       <div class="featured-card" id="booktoss">
-        <img class="preview" src="./screenshots/booktoss.png" alt="BookToss screenshot" width="800" height="450" loading="lazy">
-        <h3>BookToss &mdash; Autonomous Agent for API-less Libraries</h3>
+        <h3>BookToss &mdash; API 없는 도서관을 위한 자율 에이전트</h3>
         <p class="desc">
-          Seoul's 25 district libraries have zero APIs.
-          Built a LangGraph + Browser-use agent that auto-searches each library website,
-          handles popups, and combines results into one view with availability status.
-          Search time: 5 min &rarr; 1 min (80% reduction).
+          서울 25개 구립도서관에는 API가 없습니다.
+          LangGraph + Browser-use 에이전트가 각 도서관 사이트를 자동 탐색하고 팝업을 처리해,
+          소장·대출 가능 여부를 한 화면에 모아줍니다.
+          검색 시간 5분 &rarr; 1분(80% 단축).
         </p>
-        <div class="tech-line">Tech: LangGraph &middot; Browser-use &middot; Playwright &middot; OpenAI &middot; Streamlit &middot; Kakao Map</div>
+        <div class="shot-grid">
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">통합 검색 결과</span>
+              <span class="shot-desc">한 번의 검색으로 여러 도서관의 소장/대출 가능 여부가 한 화면에 나열된 결과 리스트.</span>
+            </div>
+          </figure>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">지도 + 경로</span>
+              <span class="shot-desc">가까운 도서관까지의 실제 경로(폴리라인)와 거리/소요시간 배지가 표시된 지도 화면.</span>
+            </div>
+          </figure>
+        </div>
+        <div class="tech-line">Tech: LangGraph &middot; Browser-use &middot; Playwright &middot; OpenAI/Solar &middot; Streamlit &middot; Kakao Map</div>
         <div class="card-actions">
           <a href="https://booktoss.bit-habit.com" target="_blank" class="btn-live">Live App</a>
           <a href="https://github.com/bookseal/Booktoss" target="_blank" class="btn-source">GitHub Source</a>
@@ -601,14 +747,29 @@
 
       <!-- Bithabit -->
       <div class="featured-card" id="bithabit">
-        <img class="preview" src="./screenshots/bithabit.png" alt="Bithabit screenshot" width="800" height="450" loading="lazy">
-        <h3>Bithabit &mdash; Habit Tracking Community Platform</h3>
-        <div class="award-badge">&#127942; 2nd Place &mdash; IITP Hackathon &middot; Running for 2+ years</div>
+        <h3>Bithabit &mdash; 습관 추적 커뮤니티 플랫폼</h3>
+        <div class="award-badge">&#127942; 2위 &mdash; IITP 해커톤 &middot; 2년 이상 운영 중</div>
         <p class="desc">
-          Time-lapse camera + real-time chat for small study groups.
-          Client-side GIF generation (gif.js Web Worker) &mdash; $0 server cost.
-          Passwordless auth (Email OTP + JWT). Users still active after 2 years.
+          소규모 스터디 그룹을 위한 타임랩스 카메라 + 실시간 채팅.
+          GIF를 클라이언트(gif.js Web Worker)에서 생성해 서버 연산 비용을 최소화.
+          비밀번호 없는 인증(이메일 OTP + JWT). 출시 2년이 지난 지금도 핵심 유저가 활동 중.
         </p>
+        <div class="shot-grid">
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">타임랩스 인증 화면</span>
+              <span class="shot-desc">웹캠 프리뷰 + 공부 타이머가 돌아가는 "공부 중" 상태. 캡처가 누적되는 모습이면 더 좋음.</span>
+            </div>
+          </figure>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">실시간 채팅 / 주간 보드</span>
+              <span class="shot-desc">생성된 GIF 인증이 공유된 채팅방 + 멤버 목록, 또는 주간 보드·개인 캘린더 화면.</span>
+            </div>
+          </figure>
+        </div>
         <div class="tech-line">Tech: Flutter Web &middot; FastAPI &middot; WebSocket &middot; JWT &middot; gif.js &middot; k3s</div>
         <div class="card-actions">
           <a href="https://habit.bit-habit.com" target="_blank" class="btn-live">Live App</a>
@@ -618,7 +779,7 @@
 
       <!-- Concentrix -->
       <div class="featured-card" id="concentrix">
-        <h3>Concentrix &mdash; M365 Technical Support, #1 of 20</h3>
+        <h3>Concentrix &mdash; M365 기술 지원, 20명 중 1위</h3>
         <div class="award-badge">&#127942; 20명 중 전 KPI 1위 &middot; Microsoft Global Tester 선정</div>
         <p class="desc">
           입사 첫 달부터 SRR 92.7%, DSAT 0%, 별점 케이스 42건으로 전 사원 중 압도적 1위.
@@ -629,19 +790,41 @@
           데이터 손실 위험을 줄이고 고객 불안을 해소.
           고객 원문: "이 분은 귀사의 정말 소중한 자산입니다. 차별화된 대우를 해야 할 직원입니다."
         </p>
+        <figure class="shot ratio">
+          <div class="shot-inner">
+            <span class="shot-cam">&#128247; 16:9 &middot; 개인정보/사번은 가리고</span>
+            <span class="shot-title">KPI 1위 증빙</span>
+            <span class="shot-desc">SRR 92.7% / DSAT 0% / 별점 42건이 보이는 성과 대시보드, 또는 Microsoft Global Tester 선정·고객 칭찬 원문 캡처.</span>
+          </div>
+        </figure>
         <div class="tech-line">Methodology: 공감 우선 협력적 문제 해결 &middot; Fireteam 멘토십 &middot; 아키텍처 기반 지원 전략</div>
       </div>
 
       <!-- bit-habit-infra -->
       <div class="featured-card" id="infra">
-        <img class="preview" src="./screenshots/infra.png" alt="bit-habit-infra Headlamp cluster map" width="800" height="450" loading="lazy">
-        <h3>bit-habit-infra &mdash; GitOps Infrastructure Platform</h3>
-        <div class="award-badge" style="color: var(--link-color);">14 services &middot; $0/month &middot; Zero manual kubectl</div>
+        <h3>bit-habit-infra &mdash; GitOps 인프라 플랫폼</h3>
+        <div class="award-badge" style="color: var(--link-color);">서비스 14개 &middot; 월 $0 &middot; 수동 kubectl 0회</div>
         <p class="desc">
-          Single-node k3s cluster on OCI free tier running all projects.
-          ArgoCD auto-syncs from Git &mdash; no manual deploys.
-          Migrated from AWS EC2 to OCI, cutting infra cost to $0.
+          OCI 무료 티어의 단일 노드 k3s 클러스터에서 모든 프로젝트를 운영.
+          ArgoCD가 Git에서 자동 동기화 &mdash; 수동 배포 없음.
+          AWS EC2에서 OCI로 이전하며 인프라 비용을 $0로 절감.
         </p>
+        <div class="shot-grid">
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">ArgoCD 대시보드</span>
+              <span class="shot-desc">14개 서비스가 모두 Synced / Healthy 상태인 애플리케이션 목록 화면.</span>
+            </div>
+          </figure>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">클러스터 맵 / 아키텍처</span>
+              <span class="shot-desc">Headlamp·k9s의 노드·파드 토폴로지, 또는 전체 인프라 아키텍처 다이어그램.</span>
+            </div>
+          </figure>
+        </div>
         <div class="tech-line">Tech: k3s &middot; ArgoCD &middot; Traefik &middot; cert-manager &middot; Terraform &middot; Docker</div>
         <div class="card-actions">
           <a href="https://github.com/bookseal/bit-habit-infra" target="_blank" class="btn-source">GitHub Source</a>
@@ -651,8 +834,27 @@
 
     <!-- More Projects -->
     <section id="more-projects">
-      <h2 class="section-title">More Projects</h2>
+      <h2 class="section-title">기타 프로젝트</h2>
       <div class="more-grid">
+
+        <div class="more-card">
+          <div class="more-header">
+            <span class="more-name">Daily Seongsu</span>
+            <span class="more-meta">
+              <span class="more-stack">MLOps &middot; Gradio &middot; k3s</span>
+              <span class="more-links"><a href="https://daily-seongsu.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/daily_seongsu" target="_blank">Git</a></span>
+            </span>
+          </div>
+          <div class="more-line1">성수역 혼잡도를 예측하고 싶지만, 데이터 수집부터 배포까지 파이프라인이 없다.</div>
+          <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result">OCI + Supabase + HuggingFace 하이브리드 클라우드로 MLOps 성숙도 L1~L6를 단계별 구축.</span></div>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">MLOps 가이드북</span>
+              <span class="shot-desc">Gradio에서 Level 1~6 완료 / 7~10 계획 로드맵 탭, 또는 성수역 혼잡도 예측 결과 차트.</span>
+            </div>
+          </figure>
+        </div>
 
         <div class="more-card">
           <div class="more-header">
@@ -664,6 +866,13 @@
           </div>
           <div class="more-line1">ML을 배우고 싶지만 이론만으로는 감이 안 온다. 실제 데이터로 직접 해봐야 이해된다.</div>
           <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result">서울 아파트 실거래가로 10단계 ML 시뮬레이터. 휴리스틱부터 AutoML까지 직접 체험.</span></div>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">10단계 ML 시뮬레이터</span>
+              <span class="shot-desc">휴리스틱부터 AutoML까지 단계 선택 UI와 예측 결과/지표가 함께 보이는 화면.</span>
+            </div>
+          </figure>
         </div>
 
         <div class="more-card">
@@ -676,18 +885,13 @@
           </div>
           <div class="more-line1">선형대수 수식은 외울 수 있지만, 고차원 공간에서 행렬이 뭘 하는지 직관이 없다.</div>
           <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result">Manim 애니메이션 + Streamlit으로 벡터, 고유값, 변환을 눈으로 보며 학습.</span></div>
-        </div>
-
-        <div class="more-card">
-          <div class="more-header">
-            <span class="more-name">Daily Seongsu</span>
-            <span class="more-meta">
-              <span class="more-stack">MLOps &middot; Gradio &middot; k3s</span>
-              <span class="more-links"><a href="https://daily-seongsu.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/daily_seongsu" target="_blank">Git</a></span>
-            </span>
-          </div>
-          <div class="more-line1">성수동 카페 혼잡도를 예측하고 싶지만, 데이터 수집부터 배포까지 파이프라인이 없다.</div>
-          <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result">OCI + Supabase + HuggingFace 하이브리드 클라우드로 엔드투엔드 MLOps 파이프라인 구축.</span></div>
+          <figure class="shot ratio">
+            <div class="shot-inner">
+              <span class="shot-cam">&#128247; 16:9</span>
+              <span class="shot-title">선형대수 시각화</span>
+              <span class="shot-desc">Manim 애니메이션 한 장면(벡터 변환/고유값)과 Streamlit 컨트롤이 함께 보이게.</span>
+            </div>
+          </figure>
         </div>
 
         <div class="more-card">
@@ -755,13 +959,14 @@
 
     <!-- Tech Stack -->
     <section id="stack">
-      <h2 class="section-title">Tech Stack</h2>
+      <h2 class="section-title">기술 스택</h2>
 
       <div class="badges-group">
         <h4>AI & Automation</h4>
         <img src="https://img.shields.io/badge/LangGraph-FF6B35?style=flat-square&logo=langchain&logoColor=white" alt="LangGraph">
         <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain">
         <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI">
+        <img src="https://img.shields.io/badge/Upstage_Solar-7C3AED?style=flat-square&logoColor=white" alt="Upstage Solar">
         <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn">
         <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
       </div>
@@ -792,38 +997,38 @@
 
     <!-- Experience -->
     <section id="experience">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title">경력</h2>
 
       <div class="exp-item">
-        <h3>Concentrix Korea (Microsoft M365 Support) &mdash; Technical Success Advisor</h3>
-        <div class="period">Aug 2025 &ndash; Nov 2025</div>
+        <h3>Concentrix Korea (Microsoft M365 지원) &mdash; Technical Success Advisor</h3>
+        <div class="period">2025. 8 &ndash; 2025. 11</div>
         <ul>
-          <li>See <a href="#concentrix">Featured Projects</a> above</li>
+          <li>위 <a href="#concentrix">주요 프로젝트</a> 참고</li>
         </ul>
       </div>
 
       <div class="exp-item">
-        <h3>Bithabit &mdash; AI Architect (Founder)</h3>
-        <div class="period">Aug 2024 &ndash; Present</div>
+        <h3>Bithabit &mdash; AI Architect (창업자)</h3>
+        <div class="period">2024. 8 &ndash; 현재</div>
         <ul>
-          <li>See <a href="#projects">Featured Projects</a> above</li>
+          <li>위 <a href="#projects">주요 프로젝트</a> 참고</li>
         </ul>
       </div>
 
       <div class="exp-item">
-        <h3>FPT Software Korea &mdash; Embedded Support Engineer</h3>
-        <div class="period">Oct 2024 &ndash; Jul 2025</div>
+        <h3>FPT Software Korea &mdash; 임베디드 지원 엔지니어</h3>
+        <div class="period">2024. 10 &ndash; 2025. 7</div>
         <ul>
-          <li>Diagnosed and resolved security module errors for Hyundai Autoever partners</li>
+          <li>현대오토에버 협력사 대상 보안 모듈 오류 진단 및 해결</li>
         </ul>
       </div>
     </section>
 
     <!-- Education -->
     <section id="education">
-      <h2 class="section-title">Education</h2>
-      <div class="edu-item"><strong>Ecole 42 Seoul</strong> &mdash; Computer Science <span class="period">(2022 &ndash; 2024)</span></div>
-      <div class="edu-item"><strong>Pukyong National University</strong> &mdash; B.S. Industrial Engineering <span class="period">(2007 &ndash; 2014)</span></div>
+      <h2 class="section-title">학력</h2>
+      <div class="edu-item"><strong>École 42 Seoul</strong> &mdash; 컴퓨터 사이언스 <span class="period">(2022 &ndash; 2024)</span></div>
+      <div class="edu-item"><strong>부경대학교</strong> &mdash; 산업공학 학사 <span class="period">(2007 &ndash; 2014)</span></div>
     </section>
 
   </div>
@@ -831,7 +1036,7 @@
   <footer>
     <p>
       &copy; <span id="year"></span> Gichan Lee. All rights reserved.<br>
-      Deployed via <a href="https://k3s.io/" target="_blank">k3s</a>. Served by Nginx. Written in pure HTML/CSS.
+      <span class="deploy-note">Deployed via <a href="https://k3s.io/" target="_blank">k3s</a>. Served by Nginx. Written in pure HTML/CSS.</span>
     </p>
   </footer>
 
