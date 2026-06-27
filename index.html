@@ -16,6 +16,9 @@
       var lang = (p === 'ko' || p === 'en') ? p : (saved || (/^ko/i.test(nav) ? 'ko' : 'en'));
       document.documentElement.classList.add('lang-' + lang);
       document.documentElement.lang = lang;
+      // Role framing (?role=product|solutions|pm) — same content, swaps the hero role label
+      var role = new URLSearchParams(location.search).get('role');
+      document.documentElement.classList.add('role-' + ((role === 'solutions' || role === 'pm') ? role : 'product'));
     })();
   </script>
   <style>
@@ -138,19 +141,26 @@
     }
 
     .hero .title {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       color: var(--link-color);
-      font-weight: 600;
-      margin-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .hero .title-en {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+      color: var(--text-color);
+      line-height: 1.55;
       font-weight: 500;
       margin-bottom: 28px;
+      max-width: 60ch;
     }
+
+    /* Role framing (?role=) — show only the active role label in the hero */
+    .roleopt { display: none; }
+    html.role-product .roleopt.product,
+    html.role-solutions .roleopt.solutions,
+    html.role-pm .roleopt.pm { display: inline; }
 
     .hero .intro {
       font-size: 1rem;
@@ -737,10 +747,10 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <h1>Gichan Lee</h1>
-      <div class="title"><span class="lang-ko">현장에 AI를 배포하고, 누구나 따라 만들게 가르칩니다</span><span class="lang-en">I deploy AI in the field — and teach anyone to build it too</span></div>
-      <div class="title-en">AI Product Builder &middot; Forward Deployed Engineer &middot; Educator</div>
+      <div class="title"><span class="roleopt product">AI Product Engineer</span><span class="roleopt solutions">AI Solutions Engineer</span><span class="roleopt pm">Technical PM / Delivery</span></div>
+      <div class="title-en"><span class="lang-ko">복잡한 수작업 업무를 신뢰할 수 있는 AI 기반 제품으로 전환하고, 비개발자·AI 에이전트·개발팀 사이의 <strong>실행·검증·정착</strong>을 책임집니다.</span><span class="lang-en">I turn complex manual workflows into reliable AI-assisted products — bridging business users, AI agents, and engineers, and <strong>owning validation, deployment, and adoption</strong>.</span></div>
 
-      <div class="intro"><span class="lang-ko">현업 문제를 AI 제품으로 <strong>만들고(Build)</strong>, 비전공자도 따라오게 <strong>가르칩니다(Teach)</strong>:</span><span class="lang-en">I <strong>build</strong> AI products for real-world problems, and <strong>teach</strong> non-experts to follow along:</span></div>
+      <div class="intro"><span class="lang-ko">제가 만들고 운영한 것들 &mdash;</span><span class="lang-en">What I've built and run &mdash;</span></div>
 
       <div class="impact-grid">
         <a href="#current" class="impact-card">
@@ -973,6 +983,7 @@
           <div class="more-line1"><span class="lang-ko">AI 답변을 그냥 읽으면 남지 않는다. 누구나 이해하게 다시 써야 내 것이 된다.</span><span class="lang-en">Reading AI answers passively doesn't stick — rewriting them so anyone understands is how they become yours.</span></div>
           <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">Systems Math &middot; AI Agent Engineering &middot; Cloud/M365 Playbook을 직접 저술한 공개 기술 가이드북.</span><span class="lang-en">A public technical handbook I authored: Systems Math &middot; AI Agent Engineering &middot; Cloud/M365 Playbook.</span></span></div>
           <figure class="shot ratio filled"><img src="./screenshots/wiki-home.png" alt="Cloud Architect's Playbook — guidebook home" loading="lazy"></figure>
+          <figure class="shot ratio filled"><img src="./screenshots/wiki-page.png" alt="Guidebook chapter — 'The DNA of Intelligence' systems-math guide" loading="lazy"></figure>
         </div>
 
         <div class="more-card" id="daily-seongsu">
