@@ -167,6 +167,20 @@
       margin-bottom: 16px;
     }
 
+    /* Per-project year chip */
+    .yr {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 1px 6px;
+      margin: 0 4px;
+      vertical-align: middle;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
     .section-sub {
       color: var(--text-secondary);
       font-size: 0.95rem;
@@ -742,8 +756,8 @@
     <a href="/" class="logo"><span>&gt;</span> GICHAN LEE</a>
     <nav>
       <a href="#current">Now</a>
-      <a href="#teach">Teach</a>
       <a href="#build">Build</a>
+      <a href="#teach">Teach</a>
       <a href="#stack">Stack</a>
       <a href="#experience">Experience</a>
       <span class="lang-switch" role="group" aria-label="Language">
@@ -868,9 +882,38 @@
       <h2 class="section-title">Build</h2>
       <p class="section-sub"><span class="lang-ko">현업과 생활의 문제를 동작하는 AI 제품으로 만듭니다. 모두 한 k3s 클러스터(월 $0)에서 라이브로 운영합니다.</span><span class="lang-en">Real and everyday problems, turned into working AI products — all live on a single k3s cluster ($0/mo).</span></p>
 
+      <!-- BookToss (Upstage Solar — lead Build project) -->
+      <div class="featured-card" id="booktoss">
+        <h3>BookToss <span class="yr">2025&ndash;26</span> &mdash; <span class="lang-ko">API 없는 도서관을 위한 자율 에이전트</span><span class="lang-en">An autonomous agent for API-less libraries</span></h3>
+        <div class="award-badge" style="color: var(--link-color);"><span class="lang-ko">Upstage Solar로 &ldquo;공개 빌드&rdquo; &mdash; 버전별 릴리스(v0.0.1&rarr;)를 이슈&rarr;PR로 쌓고, 막힌 지점·개선점을 commit·issue 링크와 함께 제품팀에 공개 피드백</span><span class="lang-en">Building in public on Upstage Solar &mdash; versioned releases (v0.0.1&rarr;) as issue&rarr;PR, with open product feedback backed by reproducible commit/issue links</span></div>
+        <p class="desc"><span class="lang-ko">
+          서울 25개 구립도서관에는 API가 없습니다.
+          LangGraph + Browser-use 에이전트가 각 도서관 사이트를 자동 탐색하고 팝업을 처리해,
+          소장·대출 가능 여부를 한 화면에 모아줍니다.
+          검색 시간 5분 &rarr; 1분(80% 단축).
+          <br><span class="note-inline">현재 Upstage <strong>Solar API</strong>로 에이전트 흐름을 처음부터 재구축 중이며, 빌드 히스토리를 쿡북처럼 기록합니다.</span>
+        </span><span class="lang-en">
+          Seoul's 25 district libraries have no API.
+          A LangGraph + Browser-use agent navigates each library site, handles pop-ups,
+          and gathers holdings/availability onto one screen.
+          Search time 5 min &rarr; 1 min (−80%).
+          <br><span class="note-inline">Currently rebuilding the agent flow from scratch on Upstage's <strong>Solar API</strong> &mdash; logging the build history like a cookbook.</span>
+        </span></p>
+        <div class="diagram"><div class="diagram-label">How it works</div><svg id="mmd-booktoss" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 768.375px; background-color: transparent;" viewBox="-8 -8 768.375 47" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mmd-booktoss{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:13px;fill:#1f2328;}#mmd-booktoss .error-icon{fill:hsl(30, 28.5714285714%, 100%);}#mmd-booktoss .error-text{fill:#000000;stroke:#000000;}#mmd-booktoss .edge-thickness-normal{stroke-width:2px;}#mmd-booktoss .edge-thickness-thick{stroke-width:3.5px;}#mmd-booktoss .edge-pattern-solid{stroke-dasharray:0;}#mmd-booktoss .edge-pattern-dashed{stroke-dasharray:3;}#mmd-booktoss .edge-pattern-dotted{stroke-dasharray:2;}#mmd-booktoss .marker{fill:#c0392b;stroke:#c0392b;}#mmd-booktoss .marker.cross{stroke:#c0392b;}#mmd-booktoss svg{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:13px;}#mmd-booktoss .label{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;color:#1f2328;}#mmd-booktoss .cluster-label text{fill:#000000;}#mmd-booktoss .cluster-label span,#mmd-booktoss p{color:#000000;}#mmd-booktoss .label text,#mmd-booktoss span,#mmd-booktoss p{fill:#1f2328;color:#1f2328;}#mmd-booktoss .node rect,#mmd-booktoss .node circle,#mmd-booktoss .node ellipse,#mmd-booktoss .node polygon,#mmd-booktoss .node path{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1px;}#mmd-booktoss .flowchart-label text{text-anchor:middle;}#mmd-booktoss .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-booktoss .node .label{text-align:center;}#mmd-booktoss .node.clickable{cursor:pointer;}#mmd-booktoss .arrowheadPath{fill:#0b0b0b;}#mmd-booktoss .edgePath .path{stroke:#c0392b;stroke-width:2.0px;}#mmd-booktoss .flowchart-link{stroke:#c0392b;fill:none;}#mmd-booktoss .edgeLabel{background-color:hsl(90, 28.5714285714%, 97.2549019608%);text-align:center;}#mmd-booktoss .edgeLabel rect{opacity:0.5;background-color:hsl(90, 28.5714285714%, 97.2549019608%);fill:hsl(90, 28.5714285714%, 97.2549019608%);}#mmd-booktoss .labelBkg{background-color:rgba(248, 250, 246.0000000001, 0.5);}#mmd-booktoss .cluster rect{fill:hsl(30, 28.5714285714%, 100%);stroke:hsl(30, 0%, 90%);stroke-width:1px;}#mmd-booktoss .cluster text{fill:#000000;}#mmd-booktoss .cluster span,#mmd-booktoss p{color:#000000;}#mmd-booktoss div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:12px;background:hsl(30, 28.5714285714%, 100%);border:1px solid hsl(30, 0%, 90%);border-radius:2px;pointer-events:none;z-index:100;}#mmd-booktoss .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#1f2328;}#mmd-booktoss :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mmd-booktoss_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path d="M72.234,15.5L75.568,15.5C78.901,15.5,85.568,15.5,91.351,15.5C97.134,15.5,102.034,15.5,104.484,15.5L106.934,15.5" id="L-Q-AG-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Q LE-AG" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M196.266,15.5L199.599,15.5C202.932,15.5,209.599,15.5,215.382,15.5C221.166,15.5,226.066,15.5,228.516,15.5L230.966,15.5" id="L-AG-L-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-AG LE-L" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M419.453,15.5L422.786,15.5C426.12,15.5,432.786,15.5,438.57,15.5C444.353,15.5,449.253,15.5,451.703,15.5L454.153,15.5" id="L-L-P-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-P" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M575.016,15.5L578.349,15.5C581.682,15.5,588.349,15.5,594.132,15.5C599.916,15.5,604.816,15.5,607.266,15.5L609.716,15.5" id="L-P-U-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-U" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-Q-0" data-node="true" data-id="Q" transform="translate(36.1171875, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-36.1171875" y="-15.5" width="72.234375" height="31"/><g class="label" style="" transform="translate(-28.6171875, -8)"><rect/><foreignObject width="57.234375" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Book title</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-AG-1" data-node="true" data-id="AG" transform="translate(154.25, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-42.015625" y="-15.5" width="84.03125" height="31"/><g class="label" style="" transform="translate(-34.515625, -8)"><rect/><foreignObject width="69.03125" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Solar agent</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-L-3" data-node="true" data-id="L" transform="translate(327.859375, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-91.59375" y="-15.5" width="183.1875" height="31"/><g class="label" style="" transform="translate(-84.09375, -8)"><rect/><foreignObject width="168.1875" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Search 25 libraries · parallel</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-P-5" data-node="true" data-id="P" transform="translate(517.234375, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-57.78125" y="-15.5" width="115.5625" height="31"/><g class="label" style="" transform="translate(-50.28125, -8)"><rect/><foreignObject width="100.5625" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Parse availability</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-U-7" data-node="true" data-id="U" transform="translate(683.6953125, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-68.6796875" y="-15.5" width="137.359375" height="31"/><g class="label" style="" transform="translate(-61.1796875, -8)"><rect/><foreignObject width="122.359375" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Unified result + map</span></div></foreignObject></g></g></g></g></g></svg></div>
+        <figure class="shot filled natural">
+            <img src="./screenshots/booktoss.png" alt="BookToss — unified results and the nearest library on a map" loading="lazy">
+          </figure>
+        <div class="tech-line">Tech: LangGraph &middot; Browser-use &middot; Playwright &middot; OpenAI/Solar &middot; Streamlit &middot; Kakao Map</div>
+        <div class="card-actions">
+          <a href="https://booktoss.bit-habit.com" target="_blank" class="btn-live">Live App</a>
+          <a href="https://bookseal.github.io/Booktoss/feedback.html" target="_blank" class="btn-source">Solar Feedback &#8599;</a>
+          <a href="https://github.com/bookseal/Booktoss" target="_blank" class="btn-source">GitHub Source</a>
+        </div>
+      </div>
+
       <!-- Sentinel -->
       <div class="featured-card" id="sentinel">
-        <h3>Sentinel &mdash; <span class="lang-ko">실시간 인지 보조 에이전트</span><span class="lang-en">Real-time Cognitive Assistant</span></h3>
+        <h3>Sentinel <span class="yr">2026</span> &mdash; <span class="lang-ko">실시간 인지 보조 에이전트</span><span class="lang-en">Real-time Cognitive Assistant</span></h3>
         <div class="award-badge">&#127942; <span class="lang-ko">1위 &mdash; 메가존클라우드 AI Agent 해커톤</span><span class="lang-en">1st place &mdash; Megazone Cloud AI Agent Hackathon</span></div>
         <p class="desc"><span class="lang-ko">
           대화가 격해지기 전에 높아진 목소리를 실시간으로 감지해 알려주는 음성 모니터입니다.
@@ -893,35 +936,9 @@
       </div>
 
       <!-- BookToss -->
-      <div class="featured-card" id="booktoss">
-        <h3>BookToss &mdash; <span class="lang-ko">API 없는 도서관을 위한 자율 에이전트</span><span class="lang-en">An autonomous agent for API-less libraries</span></h3>
-        <p class="desc"><span class="lang-ko">
-          서울 25개 구립도서관에는 API가 없습니다.
-          LangGraph + Browser-use 에이전트가 각 도서관 사이트를 자동 탐색하고 팝업을 처리해,
-          소장·대출 가능 여부를 한 화면에 모아줍니다.
-          검색 시간 5분 &rarr; 1분(80% 단축).
-          <br><span class="note-inline">현재 Upstage <strong>Solar API</strong>로 에이전트 흐름을 처음부터 재구축 중이며, 빌드 히스토리를 쿡북처럼 기록합니다.</span>
-        </span><span class="lang-en">
-          Seoul's 25 district libraries have no API.
-          A LangGraph + Browser-use agent navigates each library site, handles pop-ups,
-          and gathers holdings/availability onto one screen.
-          Search time 5 min &rarr; 1 min (−80%).
-          <br><span class="note-inline">Currently rebuilding the agent flow from scratch on Upstage's <strong>Solar API</strong> &mdash; logging the build history like a cookbook.</span>
-        </span></p>
-        <div class="diagram"><div class="diagram-label">How it works</div><svg id="mmd-booktoss" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 768.375px; background-color: transparent;" viewBox="-8 -8 768.375 47" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mmd-booktoss{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:13px;fill:#1f2328;}#mmd-booktoss .error-icon{fill:hsl(30, 28.5714285714%, 100%);}#mmd-booktoss .error-text{fill:#000000;stroke:#000000;}#mmd-booktoss .edge-thickness-normal{stroke-width:2px;}#mmd-booktoss .edge-thickness-thick{stroke-width:3.5px;}#mmd-booktoss .edge-pattern-solid{stroke-dasharray:0;}#mmd-booktoss .edge-pattern-dashed{stroke-dasharray:3;}#mmd-booktoss .edge-pattern-dotted{stroke-dasharray:2;}#mmd-booktoss .marker{fill:#c0392b;stroke:#c0392b;}#mmd-booktoss .marker.cross{stroke:#c0392b;}#mmd-booktoss svg{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:13px;}#mmd-booktoss .label{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;color:#1f2328;}#mmd-booktoss .cluster-label text{fill:#000000;}#mmd-booktoss .cluster-label span,#mmd-booktoss p{color:#000000;}#mmd-booktoss .label text,#mmd-booktoss span,#mmd-booktoss p{fill:#1f2328;color:#1f2328;}#mmd-booktoss .node rect,#mmd-booktoss .node circle,#mmd-booktoss .node ellipse,#mmd-booktoss .node polygon,#mmd-booktoss .node path{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1px;}#mmd-booktoss .flowchart-label text{text-anchor:middle;}#mmd-booktoss .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-booktoss .node .label{text-align:center;}#mmd-booktoss .node.clickable{cursor:pointer;}#mmd-booktoss .arrowheadPath{fill:#0b0b0b;}#mmd-booktoss .edgePath .path{stroke:#c0392b;stroke-width:2.0px;}#mmd-booktoss .flowchart-link{stroke:#c0392b;fill:none;}#mmd-booktoss .edgeLabel{background-color:hsl(90, 28.5714285714%, 97.2549019608%);text-align:center;}#mmd-booktoss .edgeLabel rect{opacity:0.5;background-color:hsl(90, 28.5714285714%, 97.2549019608%);fill:hsl(90, 28.5714285714%, 97.2549019608%);}#mmd-booktoss .labelBkg{background-color:rgba(248, 250, 246.0000000001, 0.5);}#mmd-booktoss .cluster rect{fill:hsl(30, 28.5714285714%, 100%);stroke:hsl(30, 0%, 90%);stroke-width:1px;}#mmd-booktoss .cluster text{fill:#000000;}#mmd-booktoss .cluster span,#mmd-booktoss p{color:#000000;}#mmd-booktoss div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:12px;background:hsl(30, 28.5714285714%, 100%);border:1px solid hsl(30, 0%, 90%);border-radius:2px;pointer-events:none;z-index:100;}#mmd-booktoss .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#1f2328;}#mmd-booktoss :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mmd-booktoss_flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-booktoss_flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path d="M72.234,15.5L75.568,15.5C78.901,15.5,85.568,15.5,91.351,15.5C97.134,15.5,102.034,15.5,104.484,15.5L106.934,15.5" id="L-Q-AG-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Q LE-AG" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M196.266,15.5L199.599,15.5C202.932,15.5,209.599,15.5,215.382,15.5C221.166,15.5,226.066,15.5,228.516,15.5L230.966,15.5" id="L-AG-L-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-AG LE-L" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M419.453,15.5L422.786,15.5C426.12,15.5,432.786,15.5,438.57,15.5C444.353,15.5,449.253,15.5,451.703,15.5L454.153,15.5" id="L-L-P-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-L LE-P" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/><path d="M575.016,15.5L578.349,15.5C581.682,15.5,588.349,15.5,594.132,15.5C599.916,15.5,604.816,15.5,607.266,15.5L609.716,15.5" id="L-P-U-0" class="edge-thickness-normal edge-pattern-solid flowchart-link LS-P LE-U" style="fill:none;" marker-end="url(#mmd-booktoss_flowchart-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-Q-0" data-node="true" data-id="Q" transform="translate(36.1171875, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-36.1171875" y="-15.5" width="72.234375" height="31"/><g class="label" style="" transform="translate(-28.6171875, -8)"><rect/><foreignObject width="57.234375" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Book title</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-AG-1" data-node="true" data-id="AG" transform="translate(154.25, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-42.015625" y="-15.5" width="84.03125" height="31"/><g class="label" style="" transform="translate(-34.515625, -8)"><rect/><foreignObject width="69.03125" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Solar agent</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-L-3" data-node="true" data-id="L" transform="translate(327.859375, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-91.59375" y="-15.5" width="183.1875" height="31"/><g class="label" style="" transform="translate(-84.09375, -8)"><rect/><foreignObject width="168.1875" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Search 25 libraries · parallel</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-P-5" data-node="true" data-id="P" transform="translate(517.234375, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-57.78125" y="-15.5" width="115.5625" height="31"/><g class="label" style="" transform="translate(-50.28125, -8)"><rect/><foreignObject width="100.5625" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Parse availability</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-U-7" data-node="true" data-id="U" transform="translate(683.6953125, 15.5)"><rect class="basic label-container" style="" rx="0" ry="0" x="-68.6796875" y="-15.5" width="137.359375" height="31"/><g class="label" style="" transform="translate(-61.1796875, -8)"><rect/><foreignObject width="122.359375" height="16"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Unified result + map</span></div></foreignObject></g></g></g></g></g></svg></div>
-        <figure class="shot filled natural">
-            <img src="./screenshots/booktoss.png" alt="BookToss — unified results and the nearest library on a map" loading="lazy">
-          </figure>
-        <div class="tech-line">Tech: LangGraph &middot; Browser-use &middot; Playwright &middot; OpenAI/Solar &middot; Streamlit &middot; Kakao Map</div>
-        <div class="card-actions">
-          <a href="https://booktoss.bit-habit.com" target="_blank" class="btn-live">Live App</a>
-          <a href="https://github.com/bookseal/Booktoss" target="_blank" class="btn-source">GitHub Source</a>
-        </div>
-      </div>
-
       <!-- Bithabit -->
       <div class="featured-card" id="bithabit">
-        <h3>Bithabit &mdash; <span class="lang-ko">습관 추적 커뮤니티 플랫폼</span><span class="lang-en">Habit-tracking community platform</span></h3>
+        <h3>Bithabit <span class="yr">2024&ndash;26</span> &mdash; <span class="lang-ko">습관 추적 커뮤니티 플랫폼</span><span class="lang-en">Habit-tracking community platform</span></h3>
         <div class="award-badge">&#127942; <span class="lang-ko">2위 &mdash; IITP 해커톤 &middot; 2년 이상 운영 중</span><span class="lang-en">2nd place &mdash; IITP Hackathon &middot; running 2+ years</span></div>
         <p class="desc"><span class="lang-ko">
           소규모 스터디 그룹을 위한 타임랩스 카메라 + 실시간 채팅.
@@ -945,7 +962,7 @@
 
       <!-- bit-habit-infra -->
       <div class="featured-card" id="infra">
-        <h3>bit-habit-infra &mdash; <span class="lang-ko">GitOps 인프라 플랫폼</span><span class="lang-en">GitOps infrastructure platform</span></h3>
+        <h3>bit-habit-infra <span class="yr">2026</span> &mdash; <span class="lang-ko">GitOps 인프라 플랫폼</span><span class="lang-en">GitOps infrastructure platform</span></h3>
         <div class="award-badge" style="color: var(--link-color);"><span class="lang-ko">서비스 14개 &middot; 월 $0 &middot; 수동 kubectl 0회</span><span class="lang-en">14 services &middot; $0/mo &middot; zero manual kubectl</span></div>
         <p class="desc"><span class="lang-ko">
           OCI 무료 티어의 단일 노드 k3s 클러스터에서 모든 프로젝트를 운영합니다.
@@ -970,7 +987,7 @@
 
         <div class="more-card">
           <div class="more-header">
-            <span class="more-name">Bithumb AI Trade</span>
+            <span class="more-name">Bithumb AI Trade</span> <span class="yr">2025</span>
             <span class="more-meta">
               <span class="more-stack">Python &middot; Bithumb API</span>
               <span class="more-links"><a href="https://github.com/bookseal/Bithumb_AI_trade" target="_blank">Git</a></span>
@@ -991,7 +1008,7 @@
 
         <div class="more-card" id="wiki">
           <div class="more-header">
-            <span class="more-name">Cloud Architect's Playbook (Wiki)</span>
+            <span class="more-name">Cloud Architect's Playbook (Wiki)</span> <span class="yr">2026</span>
             <span class="more-meta">
               <span class="more-stack"><span class="lang-ko">기술 가이드북 &middot; 공개</span><span class="lang-en">Technical handbook &middot; public</span></span>
               <span class="more-links"><a href="https://wiki.bit-habit.com" target="_blank">Live</a></span>
@@ -1005,7 +1022,7 @@
 
         <div class="more-card" id="daily-seongsu">
           <div class="more-header">
-            <span class="more-name">Daily Seongsu</span>
+            <span class="more-name">Daily Seongsu</span> <span class="yr">2026</span>
             <span class="more-meta">
               <span class="more-stack">MLOps &middot; Gradio &middot; k3s</span>
               <span class="more-links"><a href="https://daily-seongsu.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/daily_seongsu" target="_blank">Git</a></span>
@@ -1021,7 +1038,7 @@
 
         <div class="more-card" id="seoul-apt">
           <div class="more-header">
-            <span class="more-name">Seoul APT Prediction</span>
+            <span class="more-name">Seoul APT Prediction</span> <span class="yr">2025&ndash;26</span>
             <span class="more-meta">
               <span class="more-stack">scikit-learn &middot; Streamlit</span>
               <span class="more-links"><a href="https://seoul-apt.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/seoul-apt-price-prediction" target="_blank">Git</a></span>
@@ -1037,7 +1054,7 @@
 
         <div class="more-card" id="viz">
           <div class="more-header">
-            <span class="more-name">Viz Platform</span>
+            <span class="more-name">Viz Platform</span> <span class="yr">2026</span>
             <span class="more-meta">
               <span class="more-stack">Streamlit &middot; Manim</span>
               <span class="more-links"><a href="https://viz.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/linear-algebra-visualization" target="_blank">Git</a></span>
@@ -1053,7 +1070,7 @@
 
         <div class="more-card">
           <div class="more-header">
-            <span class="more-name">Munhaepang</span>
+            <span class="more-name">Munhaepang</span> <span class="yr">2025</span>
             <span class="more-meta">
               <span class="more-stack">Next.js &middot; TypeScript</span>
               <span class="more-links"><a href="https://github.com/bookseal/munhaepang" target="_blank">Git</a></span>
@@ -1065,7 +1082,7 @@
 
         <div class="more-card">
           <div class="more-header">
-            <span class="more-name">Snowball English</span>
+            <span class="more-name">Snowball English</span> <span class="yr">2025</span>
             <span class="more-meta">
               <span class="more-stack">HTML/CSS &middot; prototype</span>
               <span class="more-links"><a href="https://github.com/bookseal/Snowball_English_Web_Service" target="_blank">Git</a></span>
@@ -1077,7 +1094,7 @@
 
         <div class="more-card">
           <div class="more-header">
-            <span class="more-name">Careettalk</span>
+            <span class="more-name">Careettalk</span> <span class="yr">2024</span>
             <span class="more-meta">
               <span class="more-stack">Firebase &middot; Gemini</span>
               <span class="more-links"><a href="https://github.com/bookseal/careettalk" target="_blank">Git</a></span>
@@ -1089,7 +1106,7 @@
 
         <div class="more-card">
           <div class="more-header">
-            <span class="more-name">Thegreatyou</span>
+            <span class="more-name">Thegreatyou</span> <span class="yr">2024</span>
             <span class="more-meta">
               <span class="more-stack">Firebase &middot; Gemini</span>
               <span class="more-links"><a href="https://github.com/bookseal/thegreatyou" target="_blank">Git</a></span>
@@ -1100,7 +1117,7 @@
         </div>
 
       </div>
-      <p class="section-note"><span class="lang-ko">+ 초등수학 유튜브 채널(약 1년, 200여 편) &mdash; "9+1은 왜 10인가(위치적 기수법)"처럼 기초 원리부터 가르친 출발점입니다.</span><span class="lang-en">+ Elementary-math YouTube channel (~1 year, 200+ videos) &mdash; where it started: teaching from first principles, like "why is 9+1 ten? (positional notation)."</span></p>
+      <p class="section-note"><span class="lang-ko">+ <a href="https://www.youtube.com/@studydaily-simpleboss5145" target="_blank">초등수학 유튜브 채널</a>(약 1년, 200여 편) &mdash; "9+1은 왜 10인가(위치적 기수법)"처럼 기초 원리부터 가르친 출발점입니다.</span><span class="lang-en">+ <a href="https://www.youtube.com/@studydaily-simpleboss5145" target="_blank">Elementary-math YouTube channel</a> (~1 year, 200+ videos) &mdash; where it started: teaching from first principles, like "why is 9+1 ten? (positional notation)."</span></p>
     </section>
 
     </div>
@@ -1229,7 +1246,7 @@
     //   · 기본(Upstage/DevRel 공유용)은  현직 → 가르친다 → 만든다  로
     //   · 'fde'(일반 AI FDE 지원용)는    현직 → 만든다 → 가르친다  로
     const ORDERS = {
-      default: ['current', 'teach', 'build'], // Upstage/DevRel 공유용: 현직 → 가르친다 → 만든다
+      default: ['current', 'build', 'teach'], // 기본(Product Engineer/Upstage): 현직 → 만든다 → 가르친다
       fde:     ['current', 'build', 'teach'], // 일반 AI FDE 지원용: 현직 → 만든다 → 가르친다
       edu:     ['teach', 'current', 'build'], // 교육/콘텐츠 강조용: 가르친다 → 현직 → 만든다
     };
