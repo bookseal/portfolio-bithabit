@@ -167,14 +167,6 @@
       margin-bottom: 16px;
     }
 
-    /* Section labels */
-    .sec-en {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-left: 6px;
-    }
-
     .section-sub {
       color: var(--text-secondary);
       font-size: 0.95rem;
@@ -749,11 +741,11 @@
   <header>
     <a href="/" class="logo"><span>&gt;</span> GICHAN LEE</a>
     <nav>
-      <a href="#current"><span class="lang-ko">현직</span><span class="lang-en">Now</span></a>
-      <a href="#teach"><span class="lang-ko">가르친다</span><span class="lang-en">Teach</span></a>
-      <a href="#build"><span class="lang-ko">만든다</span><span class="lang-en">Build</span></a>
-      <a href="#stack"><span class="lang-ko">기술 스택</span><span class="lang-en">Stack</span></a>
-      <a href="#experience"><span class="lang-ko">경력</span><span class="lang-en">Experience</span></a>
+      <a href="#current">Now</a>
+      <a href="#teach">Teach</a>
+      <a href="#build">Build</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
       <span class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="ko" onclick="setLang('ko')">KO</button>
         <span class="sep">|</span>
@@ -774,27 +766,27 @@
 
       <div class="impact-grid">
         <a href="#current" class="impact-card">
-          <div class="impact-label">Lead AI FDE &middot; <span class="lang-ko">현직</span><span class="lang-en">Now</span></div>
+          <div class="impact-label">Lead AI FDE &middot; Now</div>
           <div class="impact-line1"><span class="lang-ko">C레벨의 모호한 요구와 엔지니어의 코드 사이에 번역가가 없다.</span><span class="lang-en">No translator sits between fuzzy C-level asks and engineers' code.</span></div>
           <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">요구를 기술 과제로 번역하고, 비개발자·AI·개발자를 잇는 협업 시스템을 설계·운영. 사내 시스템 기획~배포.</span><span class="lang-en">Translate asks into technical work; design &amp; run a system connecting non-devs, an AI agent, and developers. In-house system from spec to deploy.</span></span></div>
         </a>
         <a href="#seoul-apt" class="impact-card">
-          <div class="impact-label">Seoul APT &middot; <span class="lang-ko">가르친다</span><span class="lang-en">Teach</span></div>
+          <div class="impact-label">Seoul APT &middot; Teach</div>
           <div class="impact-line1"><span class="lang-ko">ML은 이론만으로 감이 안 온다. 직접 해봐야 이해된다.</span><span class="lang-en">ML doesn't click from theory alone — you learn by doing.</span></div>
           <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">서울 아파트 실거래가로 휴리스틱→AutoML 10단계 ML 시뮬레이터. "면적→가격" 직관에서 출발.</span><span class="lang-en">A 10-step ML simulator on real Seoul housing prices, heuristics→AutoML. Starts from the "area→price" intuition.</span></span></div>
         </a>
         <a href="#viz" class="impact-card">
-          <div class="impact-label">Viz &middot; <span class="lang-ko">가르친다</span><span class="lang-en">Teach</span></div>
+          <div class="impact-label">Viz &middot; Teach</div>
           <div class="impact-line1"><span class="lang-ko">선형대수 수식은 외워도, 행렬이 뭘 하는지 직관이 없다.</span><span class="lang-en">You can memorize linear-algebra formulas yet have no feel for what a matrix does.</span></div>
           <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">Manim+Streamlit으로 벡터·고유값·어텐션을 눈으로 보며 학습. 트랜스포머 이해의 다리.</span><span class="lang-en">See vectors, eigenvalues and attention with Manim+Streamlit — a bridge to understanding transformers.</span></span></div>
         </a>
         <a href="#booktoss" class="impact-card">
-          <div class="impact-label">BookToss &middot; <span class="lang-ko">만든다</span><span class="lang-en">Build</span></div>
+          <div class="impact-label">BookToss &middot; Build</div>
           <div class="impact-line1"><span class="lang-ko">서울 25개 구립도서관에 API가 없다. 책 하나 찾으려면 사이트 25개를 직접 검색해야 한다.</span><span class="lang-en">Seoul's 25 district libraries have no API — finding one book means searching 25 sites by hand.</span></div>
           <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">LLM 에이전트가 각 도서관을 자동 탐색. 검색 5분 &rarr; 1분(80%↓). <em>Solar API로 재구축 중.</em></span><span class="lang-en">An LLM agent searches every library automatically. 5 min &rarr; 1 min (−80%). <em>Rebuilding on Solar API.</em></span></span></div>
         </a>
         <a href="#sentinel" class="impact-card">
-          <div class="impact-label">Sentinel &middot; <span class="lang-ko">만든다</span><span class="lang-en">Build</span></div>
+          <div class="impact-label">Sentinel &middot; Build</div>
           <div class="impact-line1"><span class="lang-ko">대화가 격해지기 전, 정작 당사자는 자기 목소리가 커진 걸 모른다.</span><span class="lang-en">Before a talk heats up, the speaker is the last to notice their own voice rising.</span></div>
           <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">실시간 음성 볼륨 감지 + 즉시 알림. 로컬 NumPy로 $0, &lt;10ms. 해커톤 1위.</span><span class="lang-en">Real-time voice-volume detection + instant alert. Local NumPy: $0, &lt;10ms. Hackathon 1st place.</span></span></div>
         </a>
@@ -812,7 +804,7 @@
 
     <!-- ① 현직 -->
     <section id="current" data-track="current">
-      <h2 class="section-title"><span class="lang-ko">현직 </span><span class="sec-en">Lead AI FDE</span></h2>
+      <h2 class="section-title">Lead AI FDE</h2>
       <p class="section-sub"><span class="lang-ko">비개발자 고객(의도) · AI 에이전트(일꾼) · 검증하는 개발자 — 이 세 역할을 하나의 루프로 잇고, 명시적 휴먼인더루프 정책으로 안전하게 운영합니다.</span><span class="lang-en">I connect three roles into one working loop — a non-developer client (intent), an AI agent (the worker), and a developer who validates — kept safe by an explicit human-in-the-loop policy.</span></p>
 
       <!-- ★ Collaboration system (lead card) -->
@@ -873,7 +865,7 @@
 
     <!-- ③ 만든다 (Build) -->
     <section id="build" data-track="build">
-      <h2 class="section-title"><span class="lang-ko">만든다 </span><span class="sec-en">Build</span></h2>
+      <h2 class="section-title">Build</h2>
       <p class="section-sub"><span class="lang-ko">현업과 생활의 문제를 동작하는 AI 제품으로. 모두 한 k3s 클러스터(월 $0)에서 라이브.</span><span class="lang-en">Real and everyday problems, turned into working AI products — all live on a single k3s cluster ($0/mo).</span></p>
 
       <!-- Sentinel -->
@@ -993,7 +985,7 @@
 
     <!-- ② 가르친다 (Teach) -->
     <section id="teach" data-track="teach">
-      <h2 class="section-title"><span class="lang-ko">가르친다 </span><span class="sec-en">Teach</span></h2>
+      <h2 class="section-title">Teach</h2>
       <p class="section-sub"><span class="lang-ko">"AI를 누구나 이해하게" 만드는 라이브 교육 제품들. 비전공자도 직접 만지며 배웁니다.</span><span class="lang-en">Live educational products that make AI understandable to anyone — non-experts learn by touching it.</span></p>
       <div class="more-grid">
 
@@ -1116,7 +1108,7 @@
 
     <!-- Tech Stack -->
     <section id="stack">
-      <h2 class="section-title"><span class="lang-ko">기술 스택</span><span class="lang-en">Tech Stack</span></h2>
+      <h2 class="section-title">Tech Stack</h2>
 
       <div class="badges-group">
         <h4>AI & Automation</h4>
@@ -1154,13 +1146,13 @@
 
     <!-- Experience -->
     <section id="experience">
-      <h2 class="section-title"><span class="lang-ko">경력</span><span class="lang-en">Experience</span></h2>
+      <h2 class="section-title">Experience</h2>
 
       <div class="exp-item">
         <h3><span class="lang-ko">한국경영분석연구원</span><span class="lang-en">Korea Institute of Business Analysis &amp; Development</span> &mdash; AI Technical Product Manager / Lead AI FDE</h3>
         <div class="period"><span class="lang-ko">2026. 5 &ndash; 현재</span><span class="lang-en">May 2026 &ndash; present</span></div>
         <ul>
-          <li><span class="lang-ko">위 <a href="#current">현직</a> 참고 &mdash; C레벨 요구 번역, AI 협업 시스템 설계·운영, Quali-fit 기획~배포</span><span class="lang-en">See <a href="#current">Now</a> above &mdash; translating C-level asks, designing &amp; running the AI collaboration system, Quali-fit from spec to deploy</span></li>
+          <li><span class="lang-ko">위 <a href="#current">Now</a> 참고 &mdash; C레벨 요구 번역, AI 협업 시스템 설계·운영, Quali-fit 기획~배포</span><span class="lang-en">See <a href="#current">Now</a> above &mdash; translating C-level asks, designing &amp; running the AI collaboration system, Quali-fit from spec to deploy</span></li>
         </ul>
       </div>
 
@@ -1186,7 +1178,7 @@
         <h3>Bithabit &mdash; AI Architect <span class="lang-ko">(창업자)</span><span class="lang-en">(Founder)</span></h3>
         <div class="period"><span class="lang-ko">2024. 8 &ndash; 현재</span><span class="lang-en">Aug 2024 &ndash; present</span></div>
         <ul>
-          <li><span class="lang-ko">위 <a href="#build">만든다</a> &middot; <a href="#teach">가르친다</a> 프로젝트 참고</span><span class="lang-en">See <a href="#build">Build</a> &middot; <a href="#teach">Teach</a> projects above</span></li>
+          <li><span class="lang-ko">위 <a href="#build">Build</a> &middot; <a href="#teach">Teach</a> 프로젝트 참고</span><span class="lang-en">See <a href="#build">Build</a> &middot; <a href="#teach">Teach</a> projects above</span></li>
         </ul>
       </div>
 
