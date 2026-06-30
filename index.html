@@ -1042,6 +1042,45 @@
       <p class="section-sub"><span class="lang-ko">"AI를 누구나 이해하게" 만드는 라이브 교육 제품들. 비전공자도 직접 만지며 배웁니다.</span><span class="lang-en">Live educational products that make AI understandable to anyone — non-experts learn by touching it.</span></p>
       <div class="more-grid">
 
+        <div class="more-card" id="llm-app-lab">
+          <div class="more-header">
+            <span class="more-name">LLM App Lab</span> <span class="yr">2026</span>
+            <span class="more-meta">
+              <span class="more-stack">Flask &middot; React/Vite &middot; Anthropic SDK</span>
+              <!-- NOTE: llm-app-lab.bit-habit.com goes live ~3h after 2026-06-30; GitHub Pages mirror: https://bookseal.github.io/llm-app-lab/ -->
+              <span class="more-links"><a href="https://llm-app-lab.bit-habit.com" target="_blank">Live</a> / <a href="https://github.com/bookseal/llm-app-lab" target="_blank">Git</a></span>
+            </span>
+          </div>
+          <div class="more-line1"><span class="lang-ko">LLM 개념은 글로 읽으면 손에 안 잡힙니다. 직접 만들고, 일부러 망가뜨리고, 고쳐봐야 이해됩니다.</span><span class="lang-en">LLM concepts don't stick from reading — you only get them by building, deliberately breaking, and fixing them yourself.</span></div>
+          <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">vibe coding으로 작동하는 작은 앱을 직접 만들며 LLM 개념(도구 &middot; RAG &middot; 에이전트)을 익히는 온라인 강의를 만들었습니다. 개념 노트 &middot; 미니 퀴즈 &middot; git log 학습 이력까지 한곳에서.</span><span class="lang-en">An online course where you learn LLM concepts — tools, RAG, agents — by vibe-coding small working apps, with concept notes, mini quizzes, and a git-log learning trail all in one place.</span></span></div>
+          <div class="diagram"><svg id="mmd-llm-lab" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 47" role="img" aria-label="LLM App Lab learning path: first API call to production" style="max-width:786px;background-color:transparent;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:13px;">
+            <defs><marker id="mmd-llm-lab-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/></marker></defs>
+            <g fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#mmd-llm-lab-arrow)">
+              <path d="M120,15.5 L158,15.5"/>
+              <path d="M300,15.5 L338,15.5"/>
+              <path d="M470,15.5 L508,15.5"/>
+              <path d="M620,15.5 L658,15.5"/>
+            </g>
+            <g fill="#f6f8fa" stroke="#d0d7de" stroke-width="1">
+              <rect x="0" y="0" width="120" height="31"/>
+              <rect x="160" y="0" width="140" height="31"/>
+              <rect x="340" y="0" width="130" height="31"/>
+              <rect x="510" y="0" width="110" height="31"/>
+              <rect x="660" y="0" width="110" height="31"/>
+            </g>
+            <g fill="#1f2328" text-anchor="middle">
+              <text x="60" y="20">First API call</text>
+              <text x="230" y="20">Tools &amp; structure</text>
+              <text x="405" y="20">RAG &amp; context</text>
+              <text x="565" y="20">Agent loop</text>
+              <text x="715" y="20">Production</text>
+            </g>
+          </svg></div>
+          <figure class="shot natural filled">
+            <img src="./screenshots/llm-app-lab-extractor.png" alt="Instructor Job Post Extractor — paste a messy job post; Claude extracts structured fields (flagging missing ones with ⚠️) and drafts a follow-up email asking only for what's missing" loading="lazy">
+          </figure>
+        </div>
+
         <div class="more-card" id="seoul-apt">
           <div class="more-header">
             <span class="more-name">Seoul APT Prediction</span> <span class="yr">2025&ndash;26</span>
@@ -1323,14 +1362,18 @@
       });
     }
 
-    // TODO(human): setRole(role) 본문을 구현하세요. (위 setLang 을 모범으로)
-    //   1) role 검증: 'product' | 'solutions' | 'pm' 만 허용, 그 외엔 return (false)
-    //   2) <html> 의 기존 role-* 클래스를 제거하고 role-<role> 추가
-    //   3) URL 의 ?role= 을 history.replaceState 로 갱신 (공유용)
-    //   4) markActiveRole(role) 호출로 활성 링크 표시
-    //   5) 성공 시 return true  ← 이게 있으면 링크가 리로드 없이 즉시 전환,
-    //      구현 전(빈 함수)엔 false 라 링크의 ?role= 로 자연스럽게 이동(폴백).
+    // 빈 함수였던 setRole 을 setLang 과 같은 철학으로 구현 — 즉시 토글 + URL 갱신.
+    // true 를 반환하면 클릭 핸들러가 preventDefault 하여 리로드 없이 전환된다.
     function setRole(role) {
+      if (role !== 'product' && role !== 'solutions' && role !== 'pm') return false;
+      const root = document.documentElement;
+      root.classList.remove('role-product', 'role-solutions', 'role-pm');
+      root.classList.add('role-' + role);
+      const url = new URL(location.href);
+      url.searchParams.set('role', role);
+      history.replaceState(null, '', url);   // 공유용 URL 갱신 (히스토리 오염 없음)
+      markActiveRole(role);
+      return true;
     }
 
     // 초기 활성 표시 + 푸터 링크 클릭. setRole 이 true 면 리로드 없이 전환,
