@@ -498,6 +498,22 @@
       overflow-x: auto;
     }
     .diagram svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    /* Shape → role legend (built per-diagram by JS; shows only roles present).
+       Swatch shapes echo the node shapes: diamond = decision, pill = start/end. */
+    .mmd-legend {
+      display: flex; flex-wrap: wrap; gap: 5px 14px;
+      margin: 8px auto 0; padding-top: 8px; max-width: 100%;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.7rem; color: var(--text-secondary);
+    }
+    .mmd-chip { display: inline-flex; align-items: center; gap: 5px; }
+    .mmd-sw {
+      width: 12px; height: 12px; border: 1.5px solid; border-radius: 3px;
+      display: inline-block; flex: none;
+    }
+    .mmd-sw-decision { border-radius: 2px; transform: rotate(45deg) scale(0.86); }
+    .mmd-sw-store { border-radius: 7px / 3px; }
+    .mmd-sw-terminal { border-radius: 999px; width: 16px; }
     .diagram-label {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--text-secondary);
@@ -1090,7 +1106,7 @@
               <rect x="160" y="0" width="140" height="31"/>
               <rect x="340" y="0" width="130" height="31"/>
               <rect x="510" y="0" width="110" height="31"/>
-              <rect x="660" y="0" width="110" height="31"/>
+              <rect x="660" y="0" width="110" height="31" data-role="terminal"/>
             </g>
             <g fill="#1f2328" text-anchor="middle">
               <text x="60" y="20">First API call</text>
@@ -1417,6 +1433,99 @@
         a.addEventListener('click', function (e) {
           if (setRole(a.getAttribute('data-role')) === true) e.preventDefault();
         });
+      });
+    })();
+
+    /* ─ Flowchart legibility: color nodes by SHAPE, not by hand ──────────────
+       The pasted Mermaid SVGs render every node the same pale gray (#f6f8fa on
+       a white page), so a first-time reader can't tell a step from a decision
+       from a datastore. We port the docs/mermaid-fx.js idea: the author picks
+       the shape, the script picks the role color. Inline styles beat the SVG's
+       own #id-scoped <style>, so we override cleanly without !important. */
+    (function () {
+      // Role → color palette (GitHub Primer tints, tuned for a white page and
+      // print). Light fills + saturated 1.5px strokes: if a printer washes the
+      // fill out, the dark stroke + legend shape still carry the role.
+      const ROLE_COLORS = {
+        io:       { fill: '#ddf4ff', stroke: '#0969da' },  // step     — plain box
+        decision: { fill: '#fbefff', stroke: '#8250df' },  // decision — diamond
+        store:    { fill: '#fff8c5', stroke: '#9a6700' },  // store    — cylinder
+        terminal: { fill: '#dafbe1', stroke: '#1a7f37' },  // start/end— pill/dest
+      };
+
+      const ROLE_LABEL = {
+        io:       { ko: '단계',    en: 'step' },
+        decision: { ko: '분기',    en: 'decision' },
+        store:    { ko: '저장소',  en: 'store' },
+        terminal: { ko: '시작·끝', en: 'start / end' },
+      };
+
+      // The heart of the technique: read a node's shape, name its role.
+      function roleForShape(shape) {
+        if (!shape) return 'io';
+        var tag = shape.tagName.toLowerCase();
+        if (tag === 'polygon') return 'decision';  // rhombus  {"…"}
+        if (tag === 'circle')  return 'terminal';  // circle   (["…"])
+        if (tag === 'path')    return 'store';      // cylinder [("…")]
+        var rx = parseFloat(shape.getAttribute('rx') || '0');
+        var h  = parseFloat(shape.getAttribute('height') || '0');
+        if (rx > 2 && h && rx >= h / 2 - 1) return 'terminal';  // stadium pill
+        return 'io';                                            // sharp box
+      }
+
+      function paint(shape, role) {
+        var c = ROLE_COLORS[role];
+        if (!shape || !c || !c.fill) return;  // palette not filled yet → no-op
+        shape.style.fill = c.fill;
+        shape.style.stroke = c.stroke;
+        shape.style.strokeWidth = '1.5px';
+      }
+
+      function colorDiagram(svg) {
+        var seen = {};
+        var nodes = svg.querySelectorAll('g.node');
+        if (nodes.length) {                       // Mermaid-rendered SVG
+          nodes.forEach(function (n) {
+            var shape = n.querySelector(':scope > rect, :scope > polygon, :scope > path, :scope > circle')
+                     || n.querySelector('rect, polygon, path, circle');
+            var role = roleForShape(shape);
+            paint(shape, role);
+            seen[role] = true;
+          });
+        } else {                                  // hand-authored SVG (llm-lab)
+          svg.querySelectorAll('rect').forEach(function (r) {
+            var role = r.getAttribute('data-role') || 'io';
+            paint(r, role);
+            seen[role] = true;
+          });
+        }
+        return seen;
+      }
+
+      function buildLegend(seen) {
+        var wrap = document.createElement('div');
+        wrap.className = 'mmd-legend';
+        ['io', 'decision', 'store', 'terminal'].forEach(function (r) {
+          if (!seen[r] || !ROLE_COLORS[r].fill) return;   // present + colored only
+          var c = ROLE_COLORS[r], lab = ROLE_LABEL[r];
+          var chip = document.createElement('span');
+          chip.className = 'mmd-chip';
+          chip.innerHTML =
+            '<i class="mmd-sw mmd-sw-' + r + '" style="background:' + c.fill +
+            ';border-color:' + c.stroke + '"></i>' +
+            '<span class="lang-ko">' + lab.ko + '</span>' +
+            '<span class="lang-en">' + lab.en + '</span>';
+          wrap.appendChild(chip);
+        });
+        return wrap.children.length ? wrap : null;
+      }
+
+      document.querySelectorAll('svg[id^="mmd-"]').forEach(function (svg) {
+        var host = svg.closest('.diagram');
+        if (!host) return;                        // skip stray marker-only svgs
+        var seen = colorDiagram(svg);
+        var legend = buildLegend(seen);
+        if (legend && !host.querySelector('.mmd-legend')) host.appendChild(legend);
       });
     })();
   </script>
