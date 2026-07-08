@@ -10,7 +10,7 @@ A static portfolio site for [bit-habit.com](https://bit-habit.com), belonging to
 
 There is no build, lint, or test step. Edit `index.html` directly.
 
-**Live deployment:** Changes to `index.html` or images take effect immediately — the server mounts this working directory. k3s ingress routes `bit-habit.com` → `static-web-svc` → Nginx.
+**Live deployment:** Local edits are NOT live. Deploy = `git push origin master` — GitHub Actions (`.github/workflows/deploy.yml`) SSHes into the server, which `git pull`s its own clone (`~/workspace/static-web`); Nginx serves that folder via hostPath mount. k3s ingress routes `bit-habit.com` → `static-web-svc` → Nginx.
 
 ## Architecture
 
