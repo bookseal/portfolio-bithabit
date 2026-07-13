@@ -1390,6 +1390,13 @@
       default: ['current', 'build', 'teach'], // 기본(Product Engineer/Upstage): 현직 → 만든다 → 가르친다
       fde:     ['current', 'build', 'teach'], // 일반 AI FDE 지원용: 현직 → 만든다 → 가르친다
       edu:     ['teach', 'current', 'build'], // 교육/콘텐츠 강조용: 가르친다 → 현직 → 만든다
+      solutions: ['build', 'current', 'teach'], // 솔루션 엔지니어(인프라·배포·파트너): 만든다 → 현직 → 가르친다
+    };
+
+    // Build 섹션 안 카드 순서까지 바꾸고 싶을 때만 여기에 정의한다.
+    // 인프라·배포·트러블슈팅을 보는 청중에게는 bit-habit-infra 가 맨 아래 있으면 안 된다.
+    const CARD_ORDERS = {
+      solutions: ['infra', 'booktoss', 'sentinel', 'bithabit'], // k3s 인프라 → Solar 에이전트 → 나머지
     };
 
     function applySectionOrder() {
@@ -1401,6 +1408,16 @@
         const el = document.getElementById(id);
         if (el) reorderable.appendChild(el); // 다시 append 하면 그 순서로 이동
       });
+
+      // 카드 재정렬 — 있는 카드만, 정의된 순서대로 Build 섹션 안에서 이동시킨다.
+      const cardOrder = CARD_ORDERS[focus];
+      const build = document.getElementById('build');
+      if (cardOrder && build) {
+        cardOrder.forEach(function (id) {
+          const card = document.getElementById(id);
+          if (card && card.parentElement === build) build.appendChild(card);
+        });
+      }
     }
     applySectionOrder();
 
