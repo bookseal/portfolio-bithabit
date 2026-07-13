@@ -16,9 +16,17 @@
       var lang = (p === 'ko' || p === 'en') ? p : (saved || (/^ko/i.test(nav) ? 'ko' : 'en'));
       document.documentElement.classList.add('lang-' + lang);
       document.documentElement.lang = lang;
-      // Role framing (?role=product|solutions|pm) — same content, swaps the hero role label
-      var role = new URLSearchParams(location.search).get('role');
-      document.documentElement.classList.add('role-' + ((role === 'solutions' || role === 'pm') ? role : 'product'));
+      // Role framing (?role=product|solutions|infra|pm) — same content, swaps the hero role label.
+      // ?title=<free text> overrides it entirely: the hero shows exactly that string, so a link
+      // can carry the target JD's own job title without adding a new role to the whitelist.
+      var params = new URLSearchParams(location.search);
+      var role = params.get('role');
+      var customTitle = (params.get('title') || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      document.documentElement.classList.add(
+        customTitle
+          ? 'role-custom'
+          : 'role-' + ((role === 'solutions' || role === 'pm' || role === 'infra') ? role : 'product')
+      );
     })();
   </script>
   <style>
@@ -160,7 +168,9 @@
     .roleopt { display: none; }
     html.role-product .roleopt.product,
     html.role-solutions .roleopt.solutions,
-    html.role-pm .roleopt.pm { display: inline; }
+    html.role-infra .roleopt.infra,
+    html.role-pm .roleopt.pm,
+    html.role-custom .roleopt.custom { display: inline; }
 
     .hero .intro {
       font-size: 1rem;
@@ -846,7 +856,15 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <h1>Gichan Lee</h1>
-      <div class="title"><span class="roleopt product">AI Product Engineer</span><span class="roleopt solutions">AI Solutions Engineer</span><span class="roleopt pm">Technical PM / Delivery</span></div>
+      <div class="title"><span class="roleopt product">AI Product Engineer</span><span class="roleopt solutions">AI Solutions Engineer</span><span class="roleopt infra">DevOps / SRE Engineer</span><span class="roleopt pm">Technical PM / Delivery</span><span class="roleopt custom" id="hero-title-custom"></span></div>
+      <script>
+        // ?title= 로 넘어온 자유 텍스트를 히어로에 꽂는다. 파싱 도중 실행되므로 깜빡임이 없다.
+        // 반드시 textContent — innerHTML 이면 ?title=<img onerror=…> 로 XSS 가 열린다.
+        (function () {
+          var t = (new URLSearchParams(location.search).get('title') || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+          if (t) document.getElementById('hero-title-custom').textContent = t;
+        })();
+      </script>
       <div class="title-en"><span class="lang-ko">복잡한 수작업 업무를 신뢰할 수 있는 AI 기반 제품으로 전환하고, 비개발자·AI 에이전트·개발팀 사이의 <strong>실행·검증·정착</strong>을 책임집니다.</span><span class="lang-en">I turn complex manual workflows into reliable AI-assisted products — bridging business users, AI agents, and engineers, and <strong>owning validation, deployment, and adoption</strong>.</span></div>
 
       <div class="intro"><span class="lang-ko">제가 만들고 운영한 것들 &mdash;</span><span class="lang-en">What I've built and run &mdash;</span></div>
@@ -1370,6 +1388,7 @@
       <span class="lang-ko">이 프로필을 다른 역할로 보기:</span><span class="lang-en">View this profile as:</span>
       <a href="?role=product" data-role="product"><span class="lang-ko">프로덕트 엔지니어</span><span class="lang-en">Product Engineer</span></a> &middot;
       <a href="?role=solutions" data-role="solutions"><span class="lang-ko">솔루션 엔지니어</span><span class="lang-en">Solutions Engineer</span></a> &middot;
+      <a href="?role=infra" data-role="infra"><span class="lang-ko">DevOps / SRE</span><span class="lang-en">DevOps / SRE</span></a> &middot;
       <a href="?role=pm" data-role="pm"><span class="lang-ko">테크니컬 PM</span><span class="lang-en">Technical PM</span></a>
     </p>
   </footer>
@@ -1391,12 +1410,14 @@
       fde:     ['current', 'build', 'teach'], // 일반 AI FDE 지원용: 현직 → 만든다 → 가르친다
       edu:     ['teach', 'current', 'build'], // 교육/콘텐츠 강조용: 가르친다 → 현직 → 만든다
       solutions: ['current', 'build', 'teach'], // 솔루션 엔지니어: 현직 → 만든다(인프라 먼저) → 가르친다
+      infra:   ['build', 'current', 'teach'], // DevOps/SRE: 만든다(인프라 먼저) → 현직 → 가르친다
     };
 
     // Build 섹션 안 '대표 카드(featured-card)' 순서만 바꾼다.
     // 인프라·배포·트러블슈팅을 보는 청중에게는 bit-habit-infra 가 맨 아래 있으면 안 된다.
     const CARD_ORDERS = {
       solutions: ['infra', 'booktoss', 'sentinel', 'bithabit'], // k3s 인프라 → Solar 에이전트 → 나머지
+      infra:     ['infra', 'booktoss', 'sentinel', 'bithabit'], // DevOps/SRE: 위와 동일 — 인프라가 최우선
     };
 
     function applySectionOrder() {
@@ -1450,12 +1471,13 @@
     // 빈 함수였던 setRole 을 setLang 과 같은 철학으로 구현 — 즉시 토글 + URL 갱신.
     // true 를 반환하면 클릭 핸들러가 preventDefault 하여 리로드 없이 전환된다.
     function setRole(role) {
-      if (role !== 'product' && role !== 'solutions' && role !== 'pm') return false;
+      if (role !== 'product' && role !== 'solutions' && role !== 'pm' && role !== 'infra') return false;
       const root = document.documentElement;
-      root.classList.remove('role-product', 'role-solutions', 'role-pm');
+      root.classList.remove('role-product', 'role-solutions', 'role-pm', 'role-infra', 'role-custom');
       root.classList.add('role-' + role);
       const url = new URL(location.href);
       url.searchParams.set('role', role);
+      url.searchParams.delete('title');      // 사용자가 역할을 직접 골랐으면 ?title= 오버라이드는 걷어낸다
       history.replaceState(null, '', url);   // 공유용 URL 갱신 (히스토리 오염 없음)
       markActiveRole(role);
       return true;
@@ -1464,12 +1486,14 @@
     // 초기 활성 표시 + 푸터 링크 클릭. setRole 이 true 면 리로드 없이 전환,
     // 아니면 기본 동작(?role= 링크로 이동)으로 폴백 — 둘 다 동작 보장.
     (function () {
-      var cur = (document.documentElement.className.match(/role-(product|solutions|pm)/) || [])[1] || 'product';
+      // role-custom(?title= 사용 중)이면 매칭되는 링크가 없어 활성 표시도 붙지 않는다 — 의도된 동작.
+      var cur = (document.documentElement.className.match(/role-(product|solutions|pm|infra|custom)/) || [])[1] || 'product';
       markActiveRole(cur);
       document.querySelectorAll('.role-switch a[data-role]').forEach(function (a) {
         // 폴백 이동 시에도 현재 ?lang/?focus 가 유지되도록 href 를 현재 URL 기준으로 갱신
         var url = new URL(location.href);
         url.searchParams.set('role', a.getAttribute('data-role'));
+        url.searchParams.delete('title');   // 역할 링크를 누르면 ?title= 오버라이드는 버린다 (JS 폴백 경로도 동일)
         a.setAttribute('href', url.search);
         a.addEventListener('click', function (e) {
           if (setRole(a.getAttribute('data-role')) === true) e.preventDefault();
