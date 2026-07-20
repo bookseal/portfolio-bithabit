@@ -44,16 +44,20 @@ LOCAL_SHA="$(git rev-parse --short "origin/${BRANCH}")"
 echo "→ deploying ${LOCAL_SHA} to ${HOST} …"
 
 # --ff-only: refuse to deploy if the server's history diverged, instead of silently merging.
-if ! OUTPUT="$(ssh -o BatchMode=yes -o ConnectTimeout=20 "$HOST" \
-      "cd ${REMOTE_DIR} && git pull --ff-only origin ${BRANCH} && git rev-parse --short HEAD" 2>&1)"; then
-  echo "$OUTPUT" >&2
+#
+# `git pull` writes its progress ("From github.com…", "Fast-forward") to STDERR, so we push it
+# to our stderr (>&2) and keep STDOUT clean — it then contains nothing but the commit sha.
+# Merging the two streams instead (2>&1) lets them interleave out of order, and `tail -1`
+# picks up a pull-log line rather than the sha. That bug is why this comment exists.
+if ! REMOTE_SHA="$(ssh -o BatchMode=yes -o ConnectTimeout=20 "$HOST" \
+      "cd ${REMOTE_DIR} && git pull --ff-only origin ${BRANCH} >&2 && git rev-parse --short HEAD")"; then
   echo >&2
   echo "ssh/pull failed. If it says 'Permission denied (publickey)', something used the raw IP —" >&2
   echo "this script uses the '${HOST}' alias on purpose (see the gotcha at the top of this file)." >&2
   exit 1
 fi
 
-REMOTE_SHA="$(printf '%s\n' "$OUTPUT" | tail -1)"
+REMOTE_SHA="$(printf '%s' "$REMOTE_SHA" | tr -d '[:space:]')"
 
 if [ "$REMOTE_SHA" = "$LOCAL_SHA" ]; then
   echo "✓ deployed — server and origin/${BRANCH} are both at ${REMOTE_SHA}"
