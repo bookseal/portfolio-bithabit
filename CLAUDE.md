@@ -12,6 +12,20 @@ There is no build, lint, or test step. Edit `index.html` directly.
 
 **Live deployment:** Local edits are NOT live. Deploy = `git push origin master` — GitHub Actions (`.github/workflows/deploy.yml`) SSHes into the server, which `git pull`s its own clone (`~/workspace/static-web`); Nginx serves that folder via hostPath mount. k3s ingress routes `bit-habit.com` → `static-web-svc` → Nginx.
 
+**Manual deploy — when Actions is down: `./deploy.sh`.** The deploy is really just "the server fast-forwards its clone"; Actions is a wrapper around that one command, not the deploy itself. `deploy.sh` runs the same thing directly (it refuses to run if you have unpushed commits, since the server pulls from GitHub).
+
+Diagnosing a stuck deploy, in order:
+
+1. **`queued` vs `failed` splits the problem in half.** Secrets, SSH keys and YAML errors all surface *after* a runner starts. A run stuck at `queued` never got a runner, so that whole family is already ruled out — only billing/limits, a `concurrency` lock, or a platform outage remain.
+2. **GitHub fails in parts.** Check the component, not the marquee:
+   ```sh
+   curl -s https://www.githubstatus.com/api/v2/components.json \
+     | grep -o '"name":"\(Actions\|API Requests\|Git Operations\)"[^}]*"status":"[a-z_]*"'
+   ```
+3. **Correlate timestamps.** Compare the run's `createdAt` against `https://www.githubstatus.com/api/v2/incidents.json`. On 2026-07-19 a `critical` Actions incident opened at 23:34 UTC and this repo's run was created at 23:43 — nine minutes in. Actions and the REST API were in `partial_outage` (hence `gh` returning HTTP 503) while **Git Operations stayed operational**, which is why `git push` still worked and `./deploy.sh` shipped the site by hand.
+
+**Gotcha — use the `bit-habit` ssh alias, never the raw IP.** `~/.ssh/config` maps that alias to the server with `IdentitiesOnly yes` and the right key. Connecting to the IP directly never matches the Host block, so ssh offers the default key and fails with `Permission denied (publickey)`. A queued Actions run left over from an outage is harmless afterwards: it only runs `git pull --ff-only`, which is idempotent once the server is already up to date.
+
 ## Architecture
 
 - `index.html` — the entire site: HTML, CSS (inline `<style>`), and JS (inline `<script>`). Dark-themed, git-scm inspired layout with sticky header nav, hero section, and project cards.
