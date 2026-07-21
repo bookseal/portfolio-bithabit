@@ -1221,11 +1221,18 @@
         <a class="live-url" href="https://habit.bit-habit.com" target="_blank">habit.bit-habit.com <span class="ext">&#8599;</span></a>
         <div class="award-badge">&#127942; <span class="lang-ko">2위 &mdash; IITP 해커톤 &middot; 2년 이상 운영 중</span><span class="lang-en">2nd place &mdash; IITP Hackathon &middot; running 2+ years</span></div>
         <p class="desc"><span class="lang-ko">
-          소규모 스터디 그룹을 위한 타임랩스 카메라 + 실시간 채팅.
+          <strong>왜 만들었나 &mdash;</strong> 거창한 기획이 아니었습니다. 동료들끼리 습관을 같이 만들어보자는 이야기에서 시작해,
+          École 42 동료들과 쓰려고 만들었습니다. 공무원 준비생 네이버 카페에 홍보 글을 <strong>딱 한 번</strong> 올렸더니 5명쯤 들어왔는데,
+          그분들이 <strong>오래 남았습니다</strong>. 붙잡은 건 마케팅이 아니라 &lsquo;같이 한다&rsquo;는 구조였습니다.
+          <br>소규모 스터디 그룹을 위한 타임랩스 카메라 + 실시간 채팅.
           GIF를 클라이언트(gif.js Web Worker)에서 생성해 서버 연산 비용을 최소화합니다.
           비밀번호 없는 인증(이메일 OTP + JWT)을 적용했습니다. 출시 2년이 지난 지금도 핵심 유저가 활동 중입니다.
         </span><span class="lang-en">
-          A time-lapse camera + live chat for small study groups.
+          <strong>Why I built it &mdash;</strong> nothing grand: a few of us just wanted to build habits together.
+          I made it to use with my École 42 peers, then posted about it <strong>exactly once</strong> in a Korean forum for
+          civil-service exam candidates &mdash; about five people joined, and <strong>they stayed for a long time</strong>.
+          What held them wasn&rsquo;t marketing; it was doing it together.
+          <br>A time-lapse camera + live chat for small study groups.
           GIFs are rendered on the client (gif.js Web Worker) to minimize server compute.
           Passwordless auth (email OTP + JWT). Two years after launch, core users are still active.
         </span></p>
@@ -1247,11 +1254,19 @@
         <a class="live-url" href="https://sentinel.bit-habit.com" target="_blank">sentinel.bit-habit.com <span class="ext">&#8599;</span></a>
         <div class="award-badge">&#127942; <span class="lang-ko">1위 &mdash; 메가존클라우드 AI Agent 해커톤</span><span class="lang-en">1st place &mdash; Megazone Cloud AI Agent Hackathon</span></div>
         <p class="desc"><span class="lang-ko">
-          대화가 격해지기 전에 높아진 목소리를 실시간으로 감지해 알려주는 음성 모니터입니다.
+          <strong>왜 만들었나 &mdash;</strong> 회의에서 목소리가 커지는 사람은 대개 <strong>저였습니다</strong>. 그래서 남이 아니라 저를 위해 만들었습니다.
+          일반 볼륨 미터는 소용이 없었습니다 &mdash; 게이지 바늘이 움직여도 목소리는 줄지 않습니다.
+          <strong>빨간 경고등이 켜져야</strong> 비로소 &lsquo;지금 내가 크게 말하고 있구나&rsquo;를 알아채고 줄이게 됩니다.
+          그래서 측정기가 아니라 <strong>경고</strong>를 만들었습니다.
+          <br>대화가 격해지기 전에 높아진 목소리를 실시간으로 감지해 알려주는 음성 모니터입니다.
           클라우드 API 대신 로컬 NumPy를 선택해 비용 $0, 지연 &lt;10ms를 달성했습니다.
           인포뱅크 CTO와 매주 멘토링하며 기술 선택을 비즈니스 관점에서 검증합니다.
         </span><span class="lang-en">
-          A voice monitor that detects a rising voice in real time and alerts you before a conversation escalates.
+          <strong>Why I built it &mdash;</strong> the person raising their voice in a meeting was usually <strong>me</strong>.
+          So I built it for myself, not for someone else. A plain volume meter was useless &mdash; a moving gauge doesn&rsquo;t make you quieter.
+          Only when <strong>a red warning light comes on</strong> do you notice &ldquo;I&rsquo;m being loud right now&rdquo; and actually lower your voice.
+          So I built an alert, not a meter.
+          <br>A voice monitor that detects a rising voice in real time and alerts you before a conversation escalates.
           Chose local NumPy over a cloud API to hit $0 cost and &lt;10ms latency.
           Validated the tech choices from a business angle in weekly mentoring with Infobank's CTO.
         </span></p>
@@ -1356,7 +1371,7 @@
           </div>
           <div class="card-period"><span class="lang-ko">2026. 6 &ndash; 현재</span><span class="lang-en">Jun 2026 &ndash; present</span></div>
           <a class="live-url" href="https://llm-app-lab.bit-habit.com" target="_blank">llm-app-lab.bit-habit.com <span class="ext">&#8599;</span></a>
-          <div class="retro-line"><span class="lang-ko"><b>Cost tradeoff —</b> 에이전트 루프를 기본값으로 두지 않습니다. 먼저 <strong>single-shot</strong>으로 한 번에 뽑고 &mdash; 토큰이 훨씬 쌉니다 &mdash; 채워지지 않은 항목은 지어내지 않고 <strong>구조화된 결과에 &lsquo;Not specified&rsquo;로 남깁니다.</strong> 빈칸이 어디인지 눈에 보이니, <strong>그 빈칸이 정말 필요한 값인지</strong>를 보고 그때만 에이전트 루프로 올립니다. 두 방식을 나란히 놓아 recall&harr;토큰 트레이드오프를 직접 비교하게 만든 이유입니다 &mdash; 대부분의 질문은 싼 쪽으로 충분하고, 비싼 쪽이 필요한 질문은 따로 있습니다.<br><b>Evals —</b> 45개 설정을 밤새 자동 채점하며 배운 것은 <strong>RAG의 성능 차이가 대부분 검색 단계에서 결정된다</strong>는 것이었습니다. 모델을 바꾸는 것보다 청크 크기와 top-k를 바꾸는 쪽이 점수를 훨씬 크게 움직였습니다. 다만 채점 기준을 제가 직접 만들었다는 한계가 있습니다 &mdash; 다음엔 정답셋을 남이 만들게 하거나, 최소한 사람 평가와 한 번 대조해 보고 싶습니다.</span><span class="lang-en"><b>Cost tradeoff —</b> an agent loop is not the default. I try <strong>single-shot</strong> first &mdash; far cheaper in tokens &mdash; and whatever it can't fill is never invented: it stays in the <strong>structured output as &lsquo;Not specified&rsquo;.</strong> Because the gaps are visible, you can ask <strong>whether that field was actually worth having</strong>, and only then escalate to the agentic loop. That's why the two run side by side: the recall&harr;token trade-off is something you should look at, not assume. Most questions are fine on the cheap path; the ones that aren't are worth identifying.<br><b>Evals —</b> grading 45 configurations overnight taught me that <strong>most of a RAG system's quality is decided in retrieval</strong>: changing chunk size and top-k moved the score far more than changing the model. The limitation is that I wrote the grading rubric myself &mdash; next time I'd have someone else build the answer set, or at minimum check it once against human judgement.</span></div>
+          <div class="retro-line"><span class="lang-ko"><b>Cost tradeoff —</b> 에이전트 루프를 기본값으로 두지 않습니다. 먼저 <strong>single-shot</strong>으로 한 번에 뽑고 &mdash; 토큰이 훨씬 쌉니다 &mdash; 채워지지 않은 항목은 지어내지 않고 <strong>구조화된 결과에 &lsquo;Not specified&rsquo;로 남깁니다.</strong> 빈칸이 어디인지 눈에 보이니, <strong>그 빈칸이 정말 필요한 값인지</strong>를 보고 그때만 에이전트 루프로 올립니다. 두 방식을 나란히 놓아 recall&harr;토큰 트레이드오프를 직접 비교하게 만든 이유입니다 &mdash; 대부분의 질문은 싼 쪽으로 충분하고, 비싼 쪽이 필요한 질문은 따로 있습니다.<br><b>Evals —</b> 45개 설정을 밤새 자동 채점하며 배운 것은 <strong>RAG의 성능 차이가 대부분 검색 단계에서 결정된다</strong>는 것이었습니다. 모델을 바꾸는 것보다 청크 크기와 top-k를 바꾸는 쪽이 점수를 훨씬 크게 움직였습니다. 다만 채점 기준을 제가 직접 만들었다는 한계가 있습니다 &mdash; 다음엔 정답셋을 남이 만들게 하거나, 최소한 사람 평가와 한 번 대조해 보고 싶습니다.<br><b>받은 피드백 &mdash;</b> 강사에게 받은 지적은 <strong>&ldquo;UI를 더 다듬어라&rdquo;</strong>였습니다. 검색된 청크&middot;토큰 수&middot;점수를 화면에 그대로 노출해 뒀기 때문인데, 의도한 것이었습니다 &mdash; 무엇이 왜 그렇게 나왔는지 보이지 않으면 검증할 수가 없으니까요. 다만 <strong>걷어내는 일은 어렵지 않고, 남길지 말지를 정하는 쪽이 어렵습니다.</strong> 다음엔 검증 화면을 기본값으로 두지 않고 <strong>토글로 분리</strong>하겠습니다 &mdash; 만드는 사람에게 필요한 정보와 쓰는 사람에게 필요한 정보는 다르니까요.</span><span class="lang-en"><b>Cost tradeoff —</b> an agent loop is not the default. I try <strong>single-shot</strong> first &mdash; far cheaper in tokens &mdash; and whatever it can't fill is never invented: it stays in the <strong>structured output as &lsquo;Not specified&rsquo;.</strong> Because the gaps are visible, you can ask <strong>whether that field was actually worth having</strong>, and only then escalate to the agentic loop. That's why the two run side by side: the recall&harr;token trade-off is something you should look at, not assume. Most questions are fine on the cheap path; the ones that aren't are worth identifying.<br><b>Evals —</b> grading 45 configurations overnight taught me that <strong>most of a RAG system's quality is decided in retrieval</strong>: changing chunk size and top-k moved the score far more than changing the model. The limitation is that I wrote the grading rubric myself &mdash; next time I'd have someone else build the answer set, or at minimum check it once against human judgement.<br><b>Feedback I got &mdash;</b> the instructor's note was <strong>&ldquo;polish the UI.&rdquo;</strong> The screen exposed retrieved chunks, token counts and scores &mdash; deliberately, since you can't verify what you can't see. But <strong>stripping that out is the easy part; deciding whether to keep it is the hard part.</strong> Next time the verification view ships behind a <strong>toggle</strong> instead of as the default: what the builder needs to see and what the user needs to see are not the same thing.</span></div>
           <div class="award-badge">&#127942; <span class="lang-ko">수강생 중 1등 &mdash; FAA RAG 콘테스트 &middot; 강사 채점 9/10</span><span class="lang-en">Top of the class &mdash; FAA RAG contest &middot; graded 9/10</span></div>
           <div class="more-line1"><span class="lang-ko"><strong>왜 만들었나 &mdash;</strong> LLM 개념은 글로 읽으면 손에 안 잡힙니다. 직접 만들고, 일부러 망가뜨리고, 측정해봐야 이해됩니다.</span><span class="lang-en"><strong>Why I built it &mdash;</strong> LLM concepts don't stick from reading — you only get them by building, deliberately breaking, and measuring them yourself.</span></div>
           <div class="more-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">Larry Arnstein(CTO @ Clause &middot; 前 Apple &middot; Impinj &middot; Xnor.ai &middot; UW faculty)의 강의 <em>Building with LLMs</em>를 들으며 전 과정을 라이브 강의 사이트로 재구축했습니다(개념 노트 &middot; 애니메이션 다이어그램 &middot; 미니 퀴즈 &middot; 브라우저에서 실제 앱 부팅). 하이라이트는 미국 연방 항공법(14 CFR) 1,297쪽 위에 만든 RAG 챗봇 &mdash; 감이 아니라 데이터로 튜닝해 강사 채점 1등을 받았습니다.</span><span class="lang-en">Took <em>Building with LLMs</em> — a course by Larry Arnstein (CTO @ Clause; formerly Apple, Impinj, Xnor.ai, and UW faculty) — and rebuilt it as a live teaching site (concept notes &middot; animated diagrams &middot; quizzes &middot; real apps booting in the browser). The highlight: a RAG chatbot over 1,297 pages of US federal aviation law (14 CFR), tuned on data instead of vibes — and graded top of the class.</span></span></div>
