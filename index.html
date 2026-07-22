@@ -1033,7 +1033,10 @@
       </div>
 
       <div class="hero-links">
-        <a href="https://github.com/bookseal" target="_blank" class="btn primary">GitHub</a>
+        <!-- 맨 왼쪽 + primary 는 의도적이다. 이 문서가 포트폴리오 전체의 논거이므로 GitHub 보다 앞에 온다.
+             본문(#approach .ap-doc)에도 같은 링크가 있고, 여기는 스크롤 없이 3초만 보는 사람용. -->
+        <a href="https://bookseal.github.io/how-i-use-ai/" target="_blank" class="btn primary">How I use AI</a>
+        <a href="https://github.com/bookseal" target="_blank" class="btn">GitHub</a>
         <a href="https://linkedin.com/in/bookseal" target="_blank" class="btn">LinkedIn</a>
         <a href="https://wiki.bit-habit.com" target="_blank" class="btn">Wiki</a>
       </div>
@@ -1062,6 +1065,16 @@
       #approach .ap-todo{border:2px dashed #bc5800;background:rgba(188,88,0,0.06);border-radius:8px;
         padding:10px 13px;margin-top:12px;font-size:.9rem;line-height:1.55;}
       #approach .ap-todo b{color:#bc5800;}
+      /* 세 기둥의 '증거' 문서 링크. 카드가 아니라 읽을거리이므로 프로젝트 격자에 넣지 않는다. */
+      #approach .ap-doc{display:block;margin-top:18px;padding:14px 16px;text-decoration:none;color:inherit;
+        border:1px solid var(--link-color);border-radius:10px;background:rgba(9,105,218,0.05);
+        transition:background .15s ease, transform .15s ease;}
+      #approach .ap-doc:hover{background:rgba(9,105,218,0.11);transform:translateY(-1px);}
+      #approach .ap-doc .doc-title{font-weight:700;font-size:1rem;color:var(--link-color);}
+      #approach .ap-doc .ext{color:var(--text-secondary);font-weight:400;}
+      #approach .ap-doc .doc-sub{font-size:.9rem;color:var(--text-secondary);margin-top:5px;line-height:1.55;}
+      #approach .ap-doc .doc-url{display:inline-block;margin-top:8px;font-size:.84rem;color:var(--link-color);
+        font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
     </style>
     <section id="approach">
       <div class="ap-kicker"><span class="lang-ko">Gichan Lee가 매번 프로젝트를 수행하는 흐름 — 무엇을 만들지 → 어떻게 → 무엇을 배웠는지</span><span class="lang-en">The flow Gichan Lee runs on every project — what to build → how → what it taught me</span></div>
@@ -1088,6 +1101,14 @@
           <div class="ap-learn"><span class="lang-ko">신뢰는 '감'이 아니라 '문서화된 정책'으로 인코딩해야 협업이 된다.</span><span class="lang-en">Trust has to be encoded as a written policy, not a vibe, for a team to move.</span></div>
         </div>
       </div>
+
+      <!-- 위 세 기둥의 증거 문서. 프로젝트 카드가 아니라 '읽을거리'라서 Build/Teach 격자에 넣지 않았다.
+           한국어 전용 문서지만 영어 화면에도 그대로 노출한다 (분량 자체가 신호). -->
+      <a class="ap-doc" href="https://bookseal.github.io/how-i-use-ai/" target="_blank" rel="noopener">
+        <div class="doc-title">&#128196; <span class="lang-ko">더 읽기 &mdash; AI를 믿을 수 있게 쓰는 법</span><span class="lang-en">Further reading &mdash; How I use AI, so it can be trusted</span> <span class="ext">&#8599;</span></div>
+        <div class="doc-sub"><span class="lang-ko">위 세 가지를 실제 프로젝트에서 어떻게 적용했는지 정리한 문서입니다. 정답이 없는 정부 예산 검증과 정답이 있는 항공법 검색, 두 사례로 &ldquo;<strong>모델은 자신 있게 틀린다</strong>&rdquo;는 전제 위에서 어떻게 검증 구조를 세웠는지 &middot; 담당자가 바뀌어도 도는 인수인계 &middot; Claude / Gemini / Solar / 로컬 모델을 직접 써보고 남긴 한계까지.</span><span class="lang-en">A long-form writeup (in Korean) of how I applied the three principles above on real projects: building verification structures on the premise that <strong>models are confidently wrong</strong> &mdash; one case with no ground truth (government budget audits), one with it (aviation-law retrieval) &middot; handoffs that survive staff turnover &middot; and the limits I hit using Claude, Gemini, Solar and local models firsthand.</span></div>
+        <div class="doc-url">bookseal.github.io/how-i-use-ai</div>
+      </a>
 
       <div class="ap-tie"><span class="lang-ko"><strong>지금 관심사.</strong> 추출·검증·신뢰는 지금까지 <strong>각각 다른 프로젝트</strong>로 만들어봤습니다. 다음으로 풀고 싶은 건 이 셋을 <strong>하나의 제품 UI로 합치는 일</strong> &mdash; 비전문가가 AI 파이프라인을 직접 조립하고, 그 결과를 스스로 검증할 수 있게 만드는 것입니다.</span><span class="lang-en"><strong>What I'm working toward.</strong> So far I've built extraction, validation, and trust as <strong>three separate projects</strong>. What I want to solve next is <strong>fusing them into one product UI</strong> &mdash; so that a non-expert can assemble an AI pipeline themselves, and verify its output on their own.</span></div>
 
@@ -1311,7 +1332,7 @@
           I built a layered explainer &mdash; <a href="https://infra.bit-habit.com" target="_blank">infra.bit-habit.com</a> &mdash; that walks the architecture, one request, and live status (10 seconds &rarr; 1 hour). Full uptime is at <a href="https://status.bit-habit.com" target="_blank">status.bit-habit.com</a>.
         </span></p>
         <div class="tech-line">Tech: k3s &middot; Traefik &middot; cert-manager &middot; Let's Encrypt (Route53 DNS-01) &middot; Oracle Cloud (ARM)</div>
-        <div class="retro-line"><span class="lang-ko"><b>설계 —</b> 앱 배포는 자동, 인프라 변경은 일부러 수동입니다. &lsquo;잘못된 Ingress 하나가 전 사이트를 죽인다&rsquo;는 이유로 사람을 루프에 남겼고, ArgoCD도 일부러 쓰지 않았습니다 &mdash; 규모에 맞는 단순함이 곧 안정성이라서요.</span><span class="lang-en"><b>By design —</b> app deploys are automatic, infra changes deliberately manual. One bad Ingress can take every site down, so a human stays in the loop; I also chose not to run ArgoCD &mdash; simplicity matched to scale is stability.</span></div>
+        <div class="retro-line"><span class="lang-ko"><b>설계 —</b> 앱 배포는 자동(GitHub Actions &rarr; SSH), 인프라 변경은 일부러 수동입니다. &lsquo;잘못된 Ingress 하나가 전 사이트를 죽인다&rsquo;는 이유로 사람을 루프에 남겼습니다. ArgoCD는 규모에 맞춰 미뤄 뒀습니다 &mdash; 매니페스트&middot;CLI&middot;설치 튜토리얼까지 준비해 두고, <b>비밀값 암호화 &rarr; 앱별 네임스페이스 &rarr; 그다음 ArgoCD</b> 순서로 올립니다. 단순함이 곧 안정성이고, 도입에도 순서가 있습니다.</span><span class="lang-en"><b>By design —</b> app deploys are automatic (GitHub Actions &rarr; SSH), infra changes deliberately manual. One bad Ingress can take every site down, so a human stays in the loop. ArgoCD is deferred to match the scale &mdash; manifests, CLI, and an install tutorial are staged, to roll out in order: <b>secret encryption &rarr; per-app namespaces &rarr; then ArgoCD</b>. Simplicity is stability, and even adoption has an order.</span></div>
         <div class="card-links">
           <a class="src-url" href="https://github.com/bookseal/bit-habit-infra" target="_blank">github.com/bookseal/bit-habit-infra <span class="ext">&#8599;</span></a>
         </div>
