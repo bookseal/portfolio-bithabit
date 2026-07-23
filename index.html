@@ -286,20 +286,40 @@
       font-weight: 600;
     }
 
-    .impact-card:nth-child(1) { border-left: 3px solid #d1492c; }
-    .impact-card:nth-child(1) .impact-label { color: #b83a20; }
+    /* 보고서 카드 — 나머지 4개는 페이지 내 앵커(#current 등)지만 이건 유일한 외부 링크이자
+       페이지에 다 담기엔 방대한 '읽을거리'다. 위치(nth-child)가 아니라 클래스로 스타일링해
+       맨 위로 옮겨도 나머지 카드 색이 밀리지 않게 한다. 나머지는 아래에서 nth-child(2~5). */
+    .impact-card.impact-report {
+      border: 1px solid #8250df;
+      border-left: 3px solid #8250df;
+      background: linear-gradient(180deg, rgba(130,64,223,0.08), var(--bg-alt) 70%);
+    }
+    .impact-card.impact-report:hover { border-color: #6e40c9; }
+    .impact-card.impact-report .impact-label { color: #6e40c9; }
+    /* '보고서 / REPORT' 배지 — 이 카드만 링크가 아니라 문서임을 한눈에. */
+    .impact-report .report-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+      color: #fff; background: #8250df; border-radius: 4px; padding: 2px 7px; margin-right: 7px;
+      vertical-align: 1px;
+    }
+    /* URL을 텍스트로 노출 — PDF로 인쇄돼도 주소가 읽히도록(다른 카드는 앵커라 URL이 없다). */
+    .impact-report .report-url {
+      display: block; margin-top: 9px; font-size: 0.82rem; font-weight: 600; color: #6e40c9;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .impact-report .report-url .ext { color: var(--text-secondary); font-weight: 400; }
 
-    .impact-card:nth-child(2) { border-left: 3px solid #0969da; }
-    .impact-card:nth-child(2) .impact-label { color: #0860c4; }
+    .impact-card:nth-child(2) { border-left: 3px solid #d1492c; }
+    .impact-card:nth-child(2) .impact-label { color: #b83a20; }
 
-    .impact-card:nth-child(3) { border-left: 3px solid #1a7f37; }
-    .impact-card:nth-child(3) .impact-label { color: #176e30; }
+    .impact-card:nth-child(3) { border-left: 3px solid #0969da; }
+    .impact-card:nth-child(3) .impact-label { color: #0860c4; }
 
-    .impact-card:nth-child(4) { border-left: 3px solid #bc5800; }
-    .impact-card:nth-child(4) .impact-label { color: #9a4a00; }
+    .impact-card:nth-child(4) { border-left: 3px solid #1a7f37; }
+    .impact-card:nth-child(4) .impact-label { color: #176e30; }
 
-    .impact-card:nth-child(5) { border-left: 3px solid #8250df; }
-    .impact-card:nth-child(5) .impact-label { color: #6e40c9; }
+    .impact-card:nth-child(5) { border-left: 3px solid #bc5800; }
+    .impact-card:nth-child(5) .impact-label { color: #9a4a00; }
 
     .hero-links {
       display: flex;
@@ -841,6 +861,7 @@
       .more-card .more-line2 .arrow { color: #000 !important; }
       .impact-card .impact-line1, .impact-card .impact-line2,
       .more-line1, .more-line2, .desc, .tech-line,
+      .impact-report .report-url,
       .impact-card .impact-line2 .result { color: #000 !important; }
       .award-badge { color: #000 !important; }
 
@@ -1010,6 +1031,19 @@
       <div class="intro"><span class="lang-ko">제가 만들고 운영한 것들 &mdash;</span><span class="lang-en">What I've built and run &mdash;</span></div>
 
       <div class="impact-grid">
+        <!-- 보고서 카드 — 맨 위. 나머지 4개는 페이지 내 앵커(#current…)로 스크롤되지만,
+             이건 유일하게 밖으로 나가는 링크다(target=_blank). 분량이 방대해 페이지에 못 담고
+             별도 문서로 뺐다. URL을 텍스트로 노출해 PDF로 인쇄돼도 주소가 읽히게 한다.
+             한국어 훅 문장은 아래 lang-ko 안에서 직접 작성. -->
+        <a href="https://bookseal.github.io/how-i-use-ai/" target="_blank" rel="noopener" class="impact-card impact-report">
+          <div class="impact-label"><span class="report-badge"><span class="lang-ko">보고서</span><span class="lang-en">REPORT</span></span>How I use AI <span class="ext">&#8599;</span></div>
+          <div class="impact-line1">
+            <span class="lang-ko">제가 지금 실제로 쓰는 <strong>모든 AI 활용 기법</strong>을 &mdash; 손으로 다듬은 <strong>진짜 프롬프트 메시지와 스크린샷</strong>까지 그대로 &mdash; 한곳에 기록하고, 계속 고쳐 나가는 <strong>살아있는 문서</strong>입니다. 이 페이지에 담기엔 너무 방대해서 밖으로 뺐습니다.</span>
+            <span class="lang-en">Every AI technique I actually use &mdash; captured with the real prompt messages and screenshots behind it, and sharpened as I go. This is the one thing too big to fit on this page.</span>
+          </div>
+          <div class="impact-line2"><span class="arrow">&rarr;</span> <span class="result"><span class="lang-ko">다른 카드는 페이지 안 북마크지만, 이건 열어서 읽는 문서입니다. 클릭하세요.</span><span class="lang-en">The other cards jump within this page; this one opens a document. Click through.</span></span></div>
+          <span class="report-url">bookseal.github.io/how-i-use-ai <span class="ext">&#8599;</span></span>
+        </a>
         <a href="#current" class="impact-card">
           <div class="impact-label">Lead AI FDE &middot; Now</div>
           <div class="impact-line1"><span class="lang-ko">비즈니스 관점의 언어와 엔지니어의 코드 사이에는 번역가가 없습니다.</span><span class="lang-en">No translator sits between business-language intent and engineers' code.</span></div>
